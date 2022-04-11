@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import 'msg.dart';
-import 'publishbox.dart';
+import '_msg.dart';
+import '_publishbox.dart';
 
 // ignore: top_level_function_literal_block
 
@@ -19,6 +19,7 @@ class _endpointState extends State<Chart> {
       var is_me = (i % 3 == 0);
       list.add({
         "id": i,
+        "f_id": i,
         "name": "xx" + i.toString(),
         "msg": "这是说的什么什么什么什么是什么？这是说的什么什么什么什么是什么这是说的什么什么什么什么是"
             "什么这是说的什么什么什么什么是什么这是说的什么什么什么什么是什么这是说的"
@@ -39,10 +40,22 @@ class _endpointState extends State<Chart> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        // leading: IconButton(
+        //   icon: Image.network("https://api.multiavatar.com/11.png"),
+        //   onPressed: () => {},
+        // ),
+        backgroundColor: Colors.white,
+        elevation: 0.5,
         centerTitle: true,
-        title: Text("聊天(" + msgList.length.toString() + ")"),
+        title: Text(
+          "飞翔的白龙马",
+          style: TextStyle(
+            color: Colors.grey,
+          ),
+        ),
         actions: [
           IconButton(
+              color: Colors.grey,
               icon: Icon(Icons.more_vert_sharp),
               onPressed: () {
                 Navigator.pushNamed(context, "/tool/qrscan");

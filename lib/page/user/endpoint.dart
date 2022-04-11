@@ -1,4 +1,8 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
+
+import '_endpointCard.dart';
 
 // ignore: top_level_function_literal_block
 
@@ -7,13 +11,18 @@ class Endpoint extends StatefulWidget {
   State<StatefulWidget> createState() => _endpointState();
 }
 
+var renderName = ["郭进", "黄蓉", "黄老邪", "梅超风"];
+var lastMsg = ["看下这个是哪里出了问题"];
+var seed = Random(1000);
+
 class _endpointState extends State<Endpoint> {
   var endpointList = [];
 
   var getEndpointList = () {
     List<Map<String, dynamic>> list = [];
     for (var i = 0; i < 20; i++) {
-      list.add({"id": i, "name": "xx" + i.toString(), "last_msg": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx", "last_time": "20:20"});
+      var name = renderName[seed.nextInt(renderName.length)];
+      list.add({"id": i, "name": name, "last_msg": "打开电脑修改下bug", "last_time": "20:20"});
     }
     return list;
   };
@@ -28,11 +37,25 @@ class _endpointState extends State<Endpoint> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.white,
         centerTitle: true,
-        title: Text("列表(" + endpointList.length.toString() + ")"),
+        elevation: 0.5,
+        title: Text(
+          "列表(" + endpointList.length.toString() + ")",
+          style: TextStyle(
+            color: Colors.grey,
+          ),
+        ),
         actions: [
           IconButton(
-              icon: Icon(Icons.qr_code),
+              icon: Icon(Icons.search),
+              color: Colors.grey,
+              onPressed: () {
+                Navigator.pushNamed(context, "/tool/qrscan");
+              }),
+          IconButton(
+              icon: Icon(Icons.add),
+              color: Colors.grey,
               onPressed: () {
                 Navigator.pushNamed(context, "/tool/qrscan");
               })
@@ -41,15 +64,7 @@ class _endpointState extends State<Endpoint> {
       body: Center(
         child: ListView.builder(
           itemBuilder: (context, idx) {
-            return ListTile(
-              onTap: () {
-                Navigator.pushNamed(context, "/user/chart");
-              },
-              contentPadding: EdgeInsets.fromLTRB(10, 5, 5, 10),
-              leading: Image.network("https://api.multiavatar.com/" + endpointList[idx]['name'] + ".png"),
-              title: Text(endpointList[idx]['name']!),
-              subtitle: Text(endpointList[idx]['last_msg']!),
-            );
+            return EndpointCard(this.endpointList[idx]);
           },
           itemCount: endpointList.length,
         ),

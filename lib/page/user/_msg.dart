@@ -1,3 +1,4 @@
+import 'package:dino/page/user/_avatar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -14,14 +15,7 @@ class msg extends StatelessWidget {
         textDirection: msgList["is_me"] ? TextDirection.rtl : TextDirection.ltr,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Container(
-            padding: EdgeInsets.all(5),
-            child: Image.network(
-              "https://api.multiavatar.com/" + msgList['name'] + ".png",
-              width: 40,
-              height: 40,
-            ),
-          ),
+          Avatar(msgList['f_id']),
           //消息体
           Expanded(
               child: Column(
@@ -29,10 +23,18 @@ class msg extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Container(
-                padding: EdgeInsets.all(10),
+                margin: EdgeInsets.only(left: 5, right: 5),
+                padding: EdgeInsets.all(5),
                 decoration: BoxDecoration(
+                  boxShadow: [
+                    BoxShadow(
+                      color: Color(0x10000000),
+                      blurRadius: .1,
+                      spreadRadius: 0.5,
+                    ), //BoxShadow
+                  ],
                   color: msgList["is_me"] ? Colors.lightGreenAccent : Colors.white,
-                  borderRadius: new BorderRadius.all(Radius.circular(10)),
+                  borderRadius: new BorderRadius.all(Radius.circular(4)),
                 ),
                 child: Text(msgList["msg"], style: TextStyle(color: Colors.black87)),
               )
