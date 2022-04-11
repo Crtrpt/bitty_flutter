@@ -27,7 +27,7 @@ class SelectLanguage extends StatelessWidget {
                         child: Center(
                           child: ListView.builder(
                             itemBuilder: (ctx, idx) {
-                              return ListTile(title: Text(languageList[idx]["name"]));
+                              return ListTile(title: Text(languageList[idx]["name"]!));
                             },
                             itemCount: languageList.length,
                           ),

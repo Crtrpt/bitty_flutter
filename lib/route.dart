@@ -6,6 +6,7 @@ import './page/auth/findpassword.dart';
 import './page/auth/login.dart';
 import './page/auth/reset.dart';
 import './page/auth/signup.dart';
+import 'page/tools/qrscan.dart';
 
 Map<String, Widget Function(BuildContext)> route = {
   '/': (context) => MyHomePage(),
@@ -13,5 +14,6 @@ Map<String, Widget Function(BuildContext)> route = {
   '/auth/signup': (context) => signup(),
   '/auth/reset': (context) => reset(),
   '/auth/findpassword': (context) => findpassword(),
-  '/system/setting': (context) => setting()
+  '/system/setting': (context) => setting(),
+  "/tool/qrscan": (context) => QRViewExample()
 };

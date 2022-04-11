@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 
 class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key}) : super(key: key);
-
   @override
   _MyHomePageState createState() => _MyHomePageState();
 }
@@ -13,6 +11,13 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       appBar: AppBar(
         title: Text("标题"),
+        actions: [
+          IconButton(
+              icon: Icon(Icons.qr_code),
+              onPressed: () {
+                Navigator.pushNamed(context, "/tool/qrscan");
+              })
+        ],
       ),
       body: Center(
         child: Column(
@@ -25,7 +30,7 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () => {Navigator.pushNamed(context, "/auth/login")},
+        onPressed: () => {Navigator.pushNamed(context, "/system/setting")},
         tooltip: 'Increment',
         child: Icon(Icons.add),
       ), // This trailing comma makes auto-formatting nicer for build methods.
