@@ -1,8 +1,23 @@
+import 'package:dino/page/system/selectLanguage.dart';
+import 'package:dino/page/system/selectTheme.dart';
 import 'package:flutter/material.dart';
 
-class setting extends StatelessWidget {
+import 'cleanCache.dart';
+
+class Setting extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("系统设置"),
+        actions: [],
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [SelectLanguage(), SelectTheme(), CleanCache()],
+        ),
+      ),
+    );
   }
 }

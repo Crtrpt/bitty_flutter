@@ -6,19 +6,22 @@ buildscript {
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:4.1.0'
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath 'com.android.tools.build:gradle:4.2.1'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.6.10"
     }
 }
 
 allprojects {
     repositories {
         google()
-        jcenter()
+//        jcenter()
     }
 }
 
 rootProject.buildDir = '../build'
+
+ext.kotlin_version = '1.6.10'
+
 subprojects {
     project.buildDir = "${rootProject.buildDir}/${project.name}"
 }

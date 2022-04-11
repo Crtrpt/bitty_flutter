@@ -1,0 +1,5 @@
+userinfo() {
+  return {
+    "name": "",
+  };
+}
