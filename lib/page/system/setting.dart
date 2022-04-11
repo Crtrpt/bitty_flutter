@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 
 import 'cleanCache.dart';
 
-class setting extends StatelessWidget {
+class Setting extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

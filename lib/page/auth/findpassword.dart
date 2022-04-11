@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class findpassword extends StatelessWidget {
+class FindPassword extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold();

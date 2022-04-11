@@ -11,12 +11,7 @@ class Login extends StatelessWidget {
         body: Padding(
             padding: const EdgeInsets.all(10.0),
             child: Column(
-              children: [
-                ButtonBar(
-                  alignment: MainAxisAlignment.start,
-                  children: [ElevatedButton(child: Text("清空缓存"), onPressed: () => {})],
-                )
-              ],
+              children: [],
             )));
   }
 }
