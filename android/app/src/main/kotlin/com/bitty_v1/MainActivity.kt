@@ -1,4 +1,4 @@
-package com.bitty_v1
+package com.dino
 
 import io.flutter.embedding.android.FlutterActivity
 

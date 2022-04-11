@@ -1,5 +1,5 @@
-import 'package:bitty_v1/page/home.dart';
-import 'package:bitty_v1/page/system/setting.dart';
+import 'package:dino/page/home.dart';
+import 'package:dino/page/system/setting.dart';
 import 'package:flutter/material.dart';
 
 import './page/auth/findpassword.dart';
