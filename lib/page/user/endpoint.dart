@@ -1,4 +1,6 @@
 import 'package:dino/data/endpointList.dart';
+import 'package:dino/page/user/_avatar.dart';
+import 'package:dino/page/user/userDrawer.dart';
 import 'package:dino/utils/listBehavior.dart';
 import 'package:flutter/material.dart';
 
@@ -24,7 +26,14 @@ class _endpointState extends State<Endpoint> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: Drawer(
+        child: UserDrawer(),
+      ),
       appBar: AppBar(
+        leading: Padding(
+          padding: EdgeInsets.all(10),
+          child: Avatar(10, size: 50),
+        ),
         toolbarHeight: 50,
         backgroundColor: Colors.white,
         centerTitle: true,

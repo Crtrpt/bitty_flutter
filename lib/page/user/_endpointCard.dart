@@ -1,5 +1,6 @@
-import 'package:dino/page/user/_avatar.dart';
 import 'package:flutter/material.dart';
+
+import '_endpoint_avatar.dart';
 
 class EndpointCard extends StatelessWidget {
   var endpoint;
@@ -11,20 +12,32 @@ class EndpointCard extends StatelessWidget {
     return GestureDetector(
         onTap: () => {Navigator.pushNamed(context, "/user/chart")},
         child: Container(
-          color: Colors.white,
+          color: endpoint["is_pin"] ? Colors.black12 : Colors.white,
           padding: EdgeInsets.fromLTRB(10, 5, 10, 5),
           child: Flex(direction: Axis.horizontal, children: [
-            Avatar(endpoint["id"]),
+            EndpointAvatar(endpoint),
             Expanded(
                 child: Padding(
               padding: EdgeInsets.only(left: 10, right: 10, top: 0, bottom: 0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    endpoint['name']!,
-                    style: TextStyle(color: Colors.black87, fontSize: 14),
-                  ),
+                  Container(
+                      child: Flex(
+                    direction: Axis.horizontal,
+                    children: [
+                      Expanded(
+                        child: Text(
+                          endpoint['name']!,
+                          style: TextStyle(color: Colors.black87, fontSize: 14),
+                        ),
+                      ),
+                      Text(
+                        endpoint['last_time']!,
+                        style: TextStyle(color: Colors.grey, fontSize: 12),
+                      ),
+                    ],
+                  )),
                   Text(
                     endpoint['last_msg']!,
                     style: TextStyle(color: Colors.grey, fontSize: 12),
@@ -32,20 +45,6 @@ class EndpointCard extends StatelessWidget {
                 ],
               ),
             )),
-            Container(
-                child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  endpoint['last_time']!,
-                  style: TextStyle(color: Colors.grey, fontSize: 12),
-                ),
-                Text(
-                  "",
-                  style: TextStyle(color: Colors.grey),
-                )
-              ],
-            ))
           ]),
         ));
   }

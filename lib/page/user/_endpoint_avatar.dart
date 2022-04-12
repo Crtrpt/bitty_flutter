@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 
-class Avatar extends StatelessWidget {
-  var id;
-  double? size = 50;
-  Avatar(this.id, {this.size = 40});
+class EndpointAvatar extends StatelessWidget {
+  var endpoint;
+
+  EndpointAvatar(this.endpoint);
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: size,
-      height: size,
+      width: 50,
+      height: 50,
       child: Stack(
         children: [
           Container(
@@ -23,15 +23,36 @@ class Avatar extends StatelessWidget {
               ],
               borderRadius: new BorderRadius.all(Radius.circular(100)),
             ),
-            padding: EdgeInsets.all(0),
+            padding: EdgeInsets.all(4),
             child: Positioned.fill(
                 child: Image.network(
-              "https://api.multiavatar.com/" + id.toString() + ".png",
-              width: size! - 10,
-              height: size! - 10,
+              "https://api.multiavatar.com/" + endpoint['id'].toString() + ".png",
+              width: 40,
+              height: 40,
             )),
           ),
           // Positioned(left: 0, bottom: 0, child: Icon(Icons.android_outlined)),
+          if (endpoint['is_important']) ...[
+            Positioned(
+                top: 0,
+                right: 0,
+                child: Container(
+                  width: 15,
+                  height: 15,
+                  decoration: BoxDecoration(border: Border.all(width: 1, color: Colors.red), color: Colors.red, shape: BoxShape.circle),
+                  child: Center(
+                    child: Text(
+                      "99",
+                      style: TextStyle(
+                        fontSize: 8,
+                        color: Colors.white,
+                        height: 1.2,
+                      ),
+                    ),
+                  ),
+                ))
+          ],
+          //在线状态
           Positioned(
               right: 0,
               bottom: 0,
