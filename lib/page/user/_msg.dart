@@ -2,6 +2,8 @@ import 'package:dino/page/user/_avatar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import 'msg/_msg_render.dart';
+
 class msg extends StatelessWidget {
   Map msgList = {};
   msg(this.msgList);
@@ -46,7 +48,7 @@ class msg extends StatelessWidget {
                   color: msgList["is_me"] ? Colors.lightGreenAccent : Colors.white,
                   borderRadius: new BorderRadius.all(Radius.circular(4)),
                 ),
-                child: Text(msgList["msg"], style: TextStyle(color: Colors.black87)),
+                child: MsgRender(msgList),
               ),
               Padding(
                 padding: EdgeInsets.all(5),
