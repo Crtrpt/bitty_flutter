@@ -1,3 +1,4 @@
+import 'package:dino/utils/listBehavior.dart';
 import 'package:flutter/material.dart';
 
 import '_msg.dart';
@@ -66,12 +67,15 @@ class _endpointState extends State<Chart> {
         child: Column(
           children: [
             Expanded(
-                child: ListView.builder(
-              itemBuilder: (context, idx) {
-                return msg(msgList[idx]);
-              },
-              itemCount: msgList.length,
-            )),
+              child: ScrollConfiguration(
+                  behavior: ListBehavior(),
+                  child: ListView.builder(
+                    itemBuilder: (context, idx) {
+                      return msg(msgList[idx]);
+                    },
+                    itemCount: msgList.length,
+                  )),
+            ),
             Container(
               height: 50,
               width: MediaQuery.of(context).size.width,

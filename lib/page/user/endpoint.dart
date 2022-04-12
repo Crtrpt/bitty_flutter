@@ -1,5 +1,6 @@
 import 'dart:math';
 
+import 'package:dino/utils/listBehavior.dart';
 import 'package:flutter/material.dart';
 
 import '_endpointCard.dart';
@@ -62,11 +63,14 @@ class _endpointState extends State<Endpoint> {
         ],
       ),
       body: Center(
-        child: ListView.builder(
-          itemBuilder: (context, idx) {
-            return EndpointCard(this.endpointList[idx]);
-          },
-          itemCount: endpointList.length,
+        child: ScrollConfiguration(
+          behavior: ListBehavior(),
+          child: ListView.builder(
+            itemBuilder: (context, idx) {
+              return EndpointCard(this.endpointList[idx]);
+            },
+            itemCount: endpointList.length,
+          ),
         ),
       ),
     );
