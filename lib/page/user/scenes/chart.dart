@@ -1,41 +1,37 @@
 import 'package:dino/data/messageList.dart';
 import 'package:dino/utils/listBehavior.dart';
+import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 
 import '../_msg.dart';
 import '../_publishbox.dart';
 
-// ignore: top_level_function_literal_block
-
 class Chart extends StatefulWidget {
   @override
-  State<StatefulWidget> createState() => _endpointState();
+  State<StatefulWidget> createState() => ChartState();
 }
 
-class _endpointState extends State<Chart> {
+class ChartState extends State<Chart> {
   var endpoint;
   var msgList = [];
 
   @override
   void initState() {
     super.initState();
-    this.msgList = getMsgList();
+    msgList = getMsgList();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(
-        // leading: IconButton(
-        //   icon: Image.network("https://api.multiavatar.com/11.png"),
-        //   onPressed: () => {},
-        // ),
         toolbarHeight: 50,
         backgroundColor: Colors.white,
         elevation: 0.5,
         centerTitle: true,
         title: Text(
-          "飞翔的白龙马",
+          faker.person.name(),
           style: TextStyle(
             fontSize: 18,
             color: Colors.grey,
@@ -56,6 +52,17 @@ class _endpointState extends State<Chart> {
               })
         ],
       ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.startDocked,
+      floatingActionButton: Draggable(
+        child: FloatingActionButton(
+          onPressed: () {},
+          child: Icon(Icons.keyboard_voice),
+        ),
+        feedback: FloatingActionButton(
+          onPressed: () {},
+          child: Icon(Icons.keyboard_voice),
+        ),
+      ),
       body: Center(
         child: Column(
           children: [
@@ -64,15 +71,15 @@ class _endpointState extends State<Chart> {
                   behavior: ListBehavior(),
                   child: ListView.builder(
                     itemBuilder: (context, idx) {
-                      return msg(msgList[idx]);
+                      return Msg(msgList[idx]);
                     },
                     itemCount: msgList.length,
                   )),
             ),
-            PublishBox(),
           ],
         ),
       ),
+      bottomNavigationBar: Draggable(axis: Axis.vertical, child: PublishBox(), feedback: PublishBox()),
     );
   }
 }

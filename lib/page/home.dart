@@ -1,5 +1,5 @@
+import 'package:dino/page/user/allEndpoint.dart';
 import 'package:dino/page/user/endpoint.dart';
-import 'package:dino/page/user/test.dart';
 import 'package:dino/page/user/userDrawer.dart';
 import 'package:flutter/material.dart';
 
@@ -36,7 +36,7 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
         body: PageView(
           controller: pvController,
-          children: [Endpoint(), Test(), UserDrawer()],
+          children: [Endpoint(), AllEndpoint(), UserDrawer()],
         ),
         bottomNavigationBar: BottomNavigationBar(
           onTap: (i) {
@@ -47,9 +47,9 @@ class _MyHomePageState extends State<MyHomePage> {
           },
           currentIndex: idx,
           items: [
-            BottomNavigationBarItem(icon: Icon(Icons.adjust_sharp), label: "最新"),
-            BottomNavigationBarItem(icon: Icon(Icons.data_usage), label: "通讯录"),
-            BottomNavigationBarItem(icon: Icon(Icons.person), label: "我"),
+            BottomNavigationBarItem(icon: Icon(Icons.adjust_sharp), label: "new"),
+            BottomNavigationBarItem(icon: Icon(Icons.data_usage), label: "connector"),
+            BottomNavigationBarItem(icon: Icon(Icons.person), label: "me"),
           ],
         ));
   }

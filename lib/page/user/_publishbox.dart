@@ -1,7 +1,13 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class PublishBox extends StatelessWidget {
+class PublishBox extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() {
+    return _PublishBox();
+  }
+}
+
+class _PublishBox extends State<PublishBox> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -21,7 +27,7 @@ class PublishBox extends StatelessWidget {
               ),
               Expanded(
                   child: TextField(
-                decoration: InputDecoration(enabledBorder: null, hintText: "输入你要发送的消息"),
+                decoration: InputDecoration(enabledBorder: null, hintText: "send message"),
                 maxLines: 1,
               )),
               Container(

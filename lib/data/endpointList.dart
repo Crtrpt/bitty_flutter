@@ -2,7 +2,7 @@ import 'package:faker/faker.dart';
 
 getEndpointList() {
   List<Map<String, dynamic>> list = [];
-  for (var i = 0; i < 100; i++) {
+  for (var i = 0; i < 10; i++) {
     var name = faker.person.name();
     list.add({
       "id": i,

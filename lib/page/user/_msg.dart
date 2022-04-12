@@ -4,9 +4,18 @@ import 'package:flutter/material.dart';
 
 import 'msg/_msg_render.dart';
 
-class msg extends StatelessWidget {
+class Msg extends StatefulWidget {
   Map msgList = {};
-  msg(this.msgList);
+  Msg(this.msgList);
+
+  @override
+  State<StatefulWidget> createState() => _msgState(msgList);
+}
+
+class _msgState extends State<Msg> {
+  Map msgList = {};
+
+  _msgState(this.msgList);
 
   @override
   Widget build(BuildContext context) {

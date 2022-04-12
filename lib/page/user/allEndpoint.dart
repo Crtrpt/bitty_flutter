@@ -5,17 +5,16 @@ import 'package:flutter/material.dart';
 import '_avatar.dart';
 import '_endpointCard.dart';
 
-class Endpoint extends StatefulWidget {
+class AllEndpoint extends StatefulWidget {
   @override
   State<StatefulWidget> createState() => _endpointState();
 }
 
-class _endpointState extends State<Endpoint> {
+class _endpointState extends State<AllEndpoint> {
   var endpointList = [];
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     this.endpointList = getEndpointList();
   }
@@ -35,7 +34,7 @@ class _endpointState extends State<Endpoint> {
           centerTitle: true,
           elevation: 0.5,
           title: Text(
-            "new(" + endpointList.length.toString() + ")",
+            "通讯录(" + endpointList.length.toString() + ")",
             style: TextStyle(
               fontSize: 18,
               color: Colors.grey,
