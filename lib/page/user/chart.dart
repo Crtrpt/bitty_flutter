@@ -37,10 +37,17 @@ class _endpointState extends State<Chart> {
         title: Text(
           "飞翔的白龙马",
           style: TextStyle(
+            fontSize: 18,
             color: Colors.grey,
           ),
         ),
         actions: [
+          IconButton(
+              color: Colors.grey,
+              icon: Icon(Icons.video_call),
+              onPressed: () {
+                Navigator.pushNamed(context, "/tool/qrscan");
+              }),
           IconButton(
               color: Colors.grey,
               icon: Icon(Icons.more_vert_sharp),

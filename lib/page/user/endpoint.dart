@@ -32,6 +32,7 @@ class _endpointState extends State<Endpoint> {
         title: Text(
           "列表(" + endpointList.length.toString() + ")",
           style: TextStyle(
+            fontSize: 18,
             color: Colors.grey,
           ),
         ),
