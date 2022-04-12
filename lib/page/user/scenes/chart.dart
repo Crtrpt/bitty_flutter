@@ -15,6 +15,8 @@ class ChartState extends State<Chart> {
   var endpoint;
   var msgList = [];
 
+  var expand = false;
+
   @override
   void initState() {
     super.initState();
@@ -57,6 +59,7 @@ class ChartState extends State<Chart> {
           onPressed: () {},
           child: Icon(Icons.keyboard_voice),
         ),
+        childWhenDragging: Container(),
         feedback: FloatingActionButton(
           elevation: 0.2,
           onPressed: () {},
@@ -76,7 +79,23 @@ class ChartState extends State<Chart> {
                     itemCount: msgList.length,
                   )),
             ),
-            Draggable(axis: Axis.vertical, child: PublishBox(), feedback: PublishBox())
+            GestureDetector(
+              onPanUpdate: (details) {
+                // Swiping in right direction.
+                if (details.delta.dy > 8) {
+                  print("右");
+                }
+
+                // Swiping in left direction.
+                if (details.delta.dy < -8) {
+                  print("上");
+                  this.setState(() {
+                    expand = true;
+                  });
+                }
+              },
+              child: PublishBox(expand: this.expand),
+            )
           ],
         ),
       ),

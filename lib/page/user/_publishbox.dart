@@ -1,13 +1,20 @@
 import 'package:flutter/material.dart';
 
 class PublishBox extends StatefulWidget {
+  var expand;
+  var content;
+  PublishBox({this.expand, this.content = "content"});
+
   @override
   State<StatefulWidget> createState() {
-    return _PublishBox();
+    return _PublishBox(this);
   }
 }
 
 class _PublishBox extends State<PublishBox> {
+  var ctx;
+  _PublishBox(this.ctx);
+
   @override
   Widget build(BuildContext context) {
     return Material(
