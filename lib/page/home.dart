@@ -1,3 +1,6 @@
+import 'package:dino/page/user/endpoint.dart';
+import 'package:dino/page/user/test.dart';
+import 'package:dino/page/user/userDrawer.dart';
 import 'package:flutter/material.dart';
 
 class MyHomePage extends StatefulWidget {
@@ -6,34 +9,48 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  var pvController = null;
+  var idx = 0;
+
+  @override
+  void dispose() {
+    pvController.dispose();
+    super.dispose();
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    var pv = new PageController();
+    pv.addListener(() {
+      this.setState(() {
+        idx = pv.page!.toInt();
+      });
+    });
+    this.pvController = pv;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("标题"),
-        actions: [
-          IconButton(
-              icon: Icon(Icons.qr_code),
-              onPressed: () {
-                Navigator.pushNamed(context, "/tool/qrscan");
-              })
-        ],
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              'You have pushed the button this many times:',
-            ),
-          ],
+        body: PageView(
+          controller: pvController,
+          children: [Endpoint(), Test(), UserDrawer()],
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () => {Navigator.pushNamed(context, "/user/endpoint")},
-        tooltip: 'Increment',
-        child: Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
-    );
+        bottomNavigationBar: BottomNavigationBar(
+          onTap: (i) {
+            this.pvController.animateToPage(i);
+            this.setState(() {
+              idx = i;
+            });
+          },
+          currentIndex: idx,
+          items: [
+            BottomNavigationBarItem(icon: Icon(Icons.adjust_sharp), label: "最新"),
+            BottomNavigationBarItem(icon: Icon(Icons.data_usage), label: "通讯录"),
+            BottomNavigationBarItem(icon: Icon(Icons.person), label: "我"),
+          ],
+        ));
   }
 }

@@ -2,8 +2,8 @@ import 'package:dino/data/messageList.dart';
 import 'package:dino/utils/listBehavior.dart';
 import 'package:flutter/material.dart';
 
-import '_msg.dart';
-import '_publishbox.dart';
+import '../_msg.dart';
+import '../_publishbox.dart';
 
 // ignore: top_level_function_literal_block
 

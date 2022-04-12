@@ -1,9 +1,10 @@
 import 'package:dino/page/home.dart';
 import 'package:dino/page/system/setting.dart';
-import 'package:dino/page/user/chart.dart';
 import 'package:dino/page/user/endpoint.dart';
 import 'package:dino/page/user/profile.dart';
 import 'package:flutter/material.dart';
+
+import 'file:///D:/private/bitty_v1/bitty_v1/lib/page/user/scenes/chart.dart';
 
 import './page/auth/findpassword.dart';
 import './page/auth/login.dart';
