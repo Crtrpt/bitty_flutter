@@ -14,7 +14,7 @@ class Bitty extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Dino',
-      initialRoute: '/',
+      initialRoute: '/user/chart',
       routes: route,
       theme: ThemeData(
         primarySwatch: Colors.blue,

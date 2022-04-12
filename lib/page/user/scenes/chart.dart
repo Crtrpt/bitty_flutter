@@ -24,7 +24,6 @@ class ChartState extends State<Chart> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      resizeToAvoidBottomInset: false,
       appBar: AppBar(
         toolbarHeight: 50,
         backgroundColor: Colors.white,
@@ -59,6 +58,7 @@ class ChartState extends State<Chart> {
           child: Icon(Icons.keyboard_voice),
         ),
         feedback: FloatingActionButton(
+          elevation: 0.2,
           onPressed: () {},
           child: Icon(Icons.keyboard_voice),
         ),
@@ -76,10 +76,10 @@ class ChartState extends State<Chart> {
                     itemCount: msgList.length,
                   )),
             ),
+            Draggable(axis: Axis.vertical, child: PublishBox(), feedback: PublishBox())
           ],
         ),
       ),
-      bottomNavigationBar: Draggable(axis: Axis.vertical, child: PublishBox(), feedback: PublishBox()),
     );
   }
 }
