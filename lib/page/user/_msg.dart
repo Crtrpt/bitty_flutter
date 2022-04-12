@@ -22,6 +22,16 @@ class msg extends StatelessWidget {
             textDirection: msgList["is_me"] ? TextDirection.rtl : TextDirection.ltr,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              //发送用户
+              Padding(
+                padding: EdgeInsets.all(5),
+                child: Text(
+                  msgList["name"],
+                  style: TextStyle(fontSize: 12, color: Colors.black87),
+                ),
+              ),
+              //发送时间
+
               Container(
                 margin: EdgeInsets.only(left: 5, right: 5),
                 padding: EdgeInsets.all(5),
@@ -37,7 +47,14 @@ class msg extends StatelessWidget {
                   borderRadius: new BorderRadius.all(Radius.circular(4)),
                 ),
                 child: Text(msgList["msg"], style: TextStyle(color: Colors.black87)),
-              )
+              ),
+              Padding(
+                padding: EdgeInsets.all(5),
+                child: Text(
+                  msgList["last_time"],
+                  style: TextStyle(fontSize: 10, color: Colors.grey),
+                ),
+              ),
             ],
           )),
           //留白

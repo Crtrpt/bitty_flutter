@@ -1,3 +1,4 @@
+import 'package:dino/data/messageList.dart';
 import 'package:dino/utils/listBehavior.dart';
 import 'package:flutter/material.dart';
 
@@ -12,29 +13,13 @@ class Chart extends StatefulWidget {
 }
 
 class _endpointState extends State<Chart> {
+  var endpoint;
   var msgList = [];
 
-  var getMsgList = () {
-    List<Map<String, dynamic>> list = [];
-    for (var i = 0; i < 15; i++) {
-      var is_me = (i % 3 == 0);
-      list.add({
-        "id": i,
-        "f_id": i,
-        "name": "xx" + i.toString(),
-        "msg": "这是说的什么什么什么什么是什么？这是说的什么什么什么什么是什么这是说的什么什么什么什么是"
-            "什么这是说的什么什么什么什么是什么这是说的什么什么什么什么是什么这是说的"
-            "这是说的什么什么什么什么是什么这是说的什么什么什么什么是什么这是说的什么什么什么什么是什么什么什么什么什么是什么这是说的什么什么什么什么是什么这是说的什么什么什么什么是什么这是说的什么什么什么什么是什么这是说的什么什么什么什么是什么这是说的什么什么什么什么是什么这是说的什么什么什么什么是什么这是说的什么什么什么什么是什么",
-        "last_time": "20:20",
-        "is_me": is_me
-      });
-    }
-    return list;
-  };
   @override
   void initState() {
     super.initState();
-    this.msgList = this.getMsgList();
+    this.msgList = getMsgList();
   }
 
   @override
@@ -45,6 +30,7 @@ class _endpointState extends State<Chart> {
         //   icon: Image.network("https://api.multiavatar.com/11.png"),
         //   onPressed: () => {},
         // ),
+        toolbarHeight: 50,
         backgroundColor: Colors.white,
         elevation: 0.5,
         centerTitle: true,
@@ -76,11 +62,7 @@ class _endpointState extends State<Chart> {
                     itemCount: msgList.length,
                   )),
             ),
-            Container(
-              height: 50,
-              width: MediaQuery.of(context).size.width,
-              child: PublishBox(),
-            ),
+            PublishBox(),
           ],
         ),
       ),
