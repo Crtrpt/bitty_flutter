@@ -19,6 +19,8 @@ dependencies:
   hive_flutter: ^1.1.0
   faker: ^2.0.0 #假数据
   i18n_extension: ^4.2.1 # 多语言支持
+  video_player: ^2.3.0
+  flutter_markdown: ^0.6.9+1 #markdown 支持
 #  qr_code_scanner: ^1.0.0-alpha.1
 
 dev_dependencies:

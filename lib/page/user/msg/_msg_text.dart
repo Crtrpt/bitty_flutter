@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+// import 'package:flutter_markdown/flutter_markdown.dart';
 
 class MsgText extends StatelessWidget {
   var msg;
@@ -6,6 +7,6 @@ class MsgText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text(msg, style: TextStyle(color: Colors.black87));
+    return Text(this.msg);
   }
 }
