@@ -1,4 +1,3 @@
-import 'package:dino/page/home.dart';
 import 'package:dino/page/system/setting.dart';
 import 'package:dino/page/user/endpoint.dart';
 import 'package:dino/page/user/profile.dart';
@@ -11,10 +10,14 @@ import './page/auth/reset.dart';
 import './page/auth/signup.dart';
 
 Map<String, Widget Function(BuildContext)> route = {
-  '/': (context) => MyHomePage(),
+  // '/': (context) => MyHomePage(),
+  //登录
   '/auth/login': (context) => Login(),
+  //注册
   '/auth/signup': (context) => Signup(),
+  //重置
   '/auth/reset': (context) => Reset(),
+  //找回密码
   '/auth/findpassword': (context) => FindPassword(),
   //系统设置
   '/system/setting': (context) => Setting(),

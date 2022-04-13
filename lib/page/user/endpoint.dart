@@ -1,10 +1,12 @@
 import 'package:dino/data/endpointList.dart';
+import 'package:dino/i18n/default.i18n.dart';
 import 'package:dino/utils/listBehavior.dart';
 import 'package:flutter/material.dart';
 
 import '_avatar.dart';
 import '_endpointCard.dart';
 
+// import 'package:i18n_extension/i18n_extension.dart';
 class Endpoint extends StatefulWidget {
   @override
   State<StatefulWidget> createState() => _endpointState();
@@ -15,7 +17,6 @@ class _endpointState extends State<Endpoint> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     this.endpointList = getEndpointList();
   }
@@ -35,7 +36,7 @@ class _endpointState extends State<Endpoint> {
           centerTitle: true,
           elevation: 0.5,
           title: Text(
-            "new(" + endpointList.length.toString() + ")",
+            "recent".i18n + "(" + endpointList.length.toString() + ")",
             style: TextStyle(
               fontSize: 18,
               color: Colors.grey,

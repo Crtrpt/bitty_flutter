@@ -1,3 +1,4 @@
+import 'package:dino/i18n/default.i18n.dart';
 import 'package:dino/page/user/allEndpoint.dart';
 import 'package:dino/page/user/endpoint.dart';
 import 'package:dino/page/user/userDrawer.dart';
@@ -47,9 +48,9 @@ class _MyHomePageState extends State<MyHomePage> {
           },
           currentIndex: idx,
           items: [
-            BottomNavigationBarItem(icon: Icon(Icons.adjust_sharp), label: "new"),
-            BottomNavigationBarItem(icon: Icon(Icons.data_usage), label: "connector"),
-            BottomNavigationBarItem(icon: Icon(Icons.person), label: "me"),
+            BottomNavigationBarItem(icon: Icon(Icons.adjust_sharp), label: "last".i18n),
+            BottomNavigationBarItem(icon: Icon(Icons.data_usage), label: "connector".i18n),
+            BottomNavigationBarItem(icon: Icon(Icons.person), label: "me".i18n),
           ],
         ));
   }

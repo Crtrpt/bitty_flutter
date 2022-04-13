@@ -11,18 +11,21 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  flutter_localizations:
+    sdk: flutter
   cupertino_icons: ^1.0.2
   mqtt_client: ^9.6.6
   hive: ^2.0.4
   hive_flutter: ^1.1.0
-  faker: ^2.0.0
+  faker: ^2.0.0 #假数据
+  i18n_extension: ^4.2.1 # 多语言支持
 #  qr_code_scanner: ^1.0.0-alpha.1
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   hive_generator: ^1.1.0
-  build_runner: ^1.1.0
+  build_runner: ^2.1.0
 
 flutter:
   uses-material-design: true
