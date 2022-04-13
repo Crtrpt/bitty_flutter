@@ -45,7 +45,18 @@ class Login extends StatelessWidget {
                 Row(
                   children: [Checkbox(value: false, onChanged: (v) {}), Text("同意许可协议")],
                 ),
-                ElevatedButton(onPressed: () => {}, child: Text("登录"))
+                Center(
+                  child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        elevation: 0,
+                        fixedSize: const Size(
+                          500,
+                          45,
+                        ),
+                      ),
+                      onPressed: () => {},
+                      child: Text("登录", style: TextStyle(fontSize: 20))),
+                )
               ],
             ),
           )),
