@@ -18,6 +18,17 @@ class Login extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                // Center(
+                //   child: Padding(
+                //     padding: EdgeInsets.all(10),
+                //     child: Container(
+                //       child: CircleAvatar(
+                //         radius: 40,
+                //         child: Image.network("https://api.multiavatar.com/" + faker.person.name() + ".png"),
+                //       ),
+                //     ),
+                //   ),
+                // ),
                 TextFormField(
                   style: TextStyle(fontSize: 20),
                   decoration: InputDecoration(
@@ -54,7 +65,9 @@ class Login extends StatelessWidget {
                           45,
                         ),
                       ),
-                      onPressed: () => {},
+                      onPressed: () {
+                        Navigator.pushNamed(context, "/home");
+                      },
                       child: Text("登录", style: TextStyle(fontSize: 20))),
                 )
               ],
@@ -66,7 +79,10 @@ class Login extends StatelessWidget {
                 children: [
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
-                    children: [TextButton(onPressed: () => {}, child: Text("注册")), TextButton(onPressed: () => {}, child: Text("找回密码"))],
+                    children: [
+                      TextButton(onPressed: () => {Navigator.pushNamed(context, "/auth/signup")}, child: Text("注册")),
+                      TextButton(onPressed: () => {Navigator.pushNamed(context, "/user/findpassword")}, child: Text("找回密码"))
+                    ],
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,

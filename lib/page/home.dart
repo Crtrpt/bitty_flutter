@@ -1,7 +1,7 @@
 import 'package:dino/i18n/default.i18n.dart';
 import 'package:dino/page/user/allEndpoint.dart';
 import 'package:dino/page/user/endpoint.dart';
-import 'package:dino/page/user/userDrawer.dart';
+import 'package:dino/page/user/profile.dart';
 import 'package:flutter/material.dart';
 
 class MyHomePage extends StatefulWidget {
@@ -21,7 +21,6 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     var pv = new PageController();
     pv.addListener(() {
@@ -37,7 +36,7 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
         body: PageView(
           controller: pvController,
-          children: [Endpoint(), AllEndpoint(), UserDrawer()],
+          children: [Endpoint(), AllEndpoint(), Profile()],
         ),
         bottomNavigationBar: BottomNavigationBar(
           onTap: (i) {
