@@ -10,7 +10,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  var pvController = null;
+  late PageController pvController;
   var idx = 0;
 
   @override
@@ -41,7 +41,7 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
         bottomNavigationBar: BottomNavigationBar(
           onTap: (i) {
-            this.pvController.animateToPage(i);
+            this.pvController.jumpToPage(i);
             this.setState(() {
               idx = i;
             });

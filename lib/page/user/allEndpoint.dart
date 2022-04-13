@@ -41,17 +41,26 @@ class _endpointState extends State<AllEndpoint> {
             ),
           ),
           actions: [
+            //视频通讯录
             IconButton(
                 icon: Icon(Icons.search),
                 color: Colors.grey,
                 onPressed: () {
-                  Navigator.pushNamed(context, "/tool/qrscan");
+                  Navigator.pushNamed(context, "/system/search");
                 }),
+            //系统消息
+            IconButton(
+                icon: Icon(Icons.add_alert),
+                color: Colors.grey,
+                onPressed: () {
+                  Navigator.pushNamed(context, "/tool/alertList");
+                }),
+            //增加
             IconButton(
                 icon: Icon(Icons.add),
                 color: Colors.grey,
                 onPressed: () {
-                  Navigator.pushNamed(context, "/tool/qrscan");
+                  Navigator.pushNamed(context, "/system/add");
                 })
           ],
         ),

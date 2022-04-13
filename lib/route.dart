@@ -21,8 +21,14 @@ Map<String, Widget Function(BuildContext)> route = {
   '/auth/findpassword': (context) => FindPassword(),
   //系统设置
   '/system/setting': (context) => Setting(),
+  //系统通知列表
+  '/system/alertList': (context) => Setting(),
+  //系统通知详情
+  '/system/alert': (context) => Setting(),
   //用户列表
   '/user/endpoint': (context) => Endpoint(),
+  //搜索
+  '/user/search': (context) => Endpoint(),
   //chart列表
   '/user/chart': (context) => Chart(),
   //用户信息

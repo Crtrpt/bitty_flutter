@@ -1,3 +1,4 @@
+import 'package:dino/page/auth/login.dart';
 import 'package:dino/page/home.dart';
 import 'package:dino/route.dart';
 import 'package:flutter/material.dart';
@@ -14,6 +15,7 @@ Future<void> main() async {
 class Bitty extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    var isLogin = false;
     return MaterialApp(
         localizationsDelegates: [
           GlobalMaterialLocalizations.delegate,
@@ -29,6 +31,6 @@ class Bitty extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home: MyHomePage());
+        home: isLogin ? MyHomePage() : Login());
   }
 }
