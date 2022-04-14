@@ -5,7 +5,11 @@ class Login extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Form(
+        body: Container(
+      decoration: BoxDecoration(
+          gradient:
+              LinearGradient(stops: [0.2, 0.5, 0.8, 0.7], colors: [Colors.blue[50]!, Colors.blue[100]!, Colors.blue[200]!, Colors.blue[300]!], begin: Alignment.bottomLeft, end: Alignment.topRight)),
+      child: Form(
           child: Stack(
         children: [
           // Positioned(
@@ -15,7 +19,7 @@ class Login extends StatelessWidget {
           // ),
           Positioned(
               child: Padding(
-            padding: EdgeInsets.only(top: 200, left: 10, right: 10),
+            padding: EdgeInsets.only(top: 240, left: 10, right: 10),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -91,6 +95,6 @@ class Login extends StatelessWidget {
               width: MediaQuery.of(context).size.width)
         ],
       )),
-    );
+    ));
   }
 }
