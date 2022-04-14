@@ -12,7 +12,7 @@ extension Localization on String {
     "agreeLicense": {"en_us": "I agree to the license agreement", "zh-cn": "同意许可协议"},
     "loginBtn": {"en_us": "Login", "zh-cn": "登录"},
     "signupLink": {"en_us": "Signup", "zh-cn": "注册"},
-    "signupBtn": {"en_us": "Login", "zh-cn": "登录"},
+    "signupBtn": {"en_us": "Signup", "zh-cn": "登录"},
     "findPasswordLink": {"en_us": "Find my password", "zh-cn": "找回密码"},
   });
 
