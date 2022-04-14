@@ -1,3 +1,4 @@
+import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 
 class Avatar extends StatelessWidget {
@@ -25,8 +26,8 @@ class Avatar extends StatelessWidget {
             ),
             padding: EdgeInsets.all(0),
             child: Positioned.fill(
-                child: Image.network(
-              "https://api.multiavatar.com/" + id.toString() + ".png",
+                child: Image.asset(
+              'assets/images/' + faker.randomGenerator.integer(5).toString() + '.png',
               width: size! - 10,
               height: size! - 10,
             )),

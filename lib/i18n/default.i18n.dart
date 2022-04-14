@@ -6,6 +6,12 @@ extension Localization on String {
     "last": {"en_us": "last message", "zh-cn": "最新消息"},
     "connector": {"en_us": "connector", "zh-cn": "通讯录"},
     "me": {"en_us": "me", "zh-cn": "我"},
+    "inputYourAccount": {"en_us": "account", "zh-cn": "输入你的账户"},
+    "inputYourPassword": {"en_us": "password", "zh-cn": "密码"},
+    "agreeLicense": {"en_us": "I agree to the license agreement", "zh-cn": "同意许可协议"},
+    "loginBtn": {"en_us": "Login", "zh-cn": "登录"},
+    "signupLink": {"en_us": "signup", "zh-cn": "注册"},
+    "findPasswordLink": {"en_us": "find my password", "zh-cn": "找回密码"},
   });
 
   String get i18n => localize(this, _t);

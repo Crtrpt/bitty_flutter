@@ -1,3 +1,4 @@
+import 'package:dino/i18n/default.i18n.dart';
 import 'package:flutter/material.dart';
 
 class Login extends StatelessWidget {
@@ -18,43 +19,34 @@ class Login extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                // Center(
-                //   child: Padding(
-                //     padding: EdgeInsets.all(10),
-                //     child: Container(
-                //       child: CircleAvatar(
-                //         radius: 40,
-                //         child: Image.network("https://api.multiavatar.com/" + faker.person.name() + ".png"),
-                //       ),
-                //     ),
-                //   ),
-                // ),
                 TextFormField(
                   style: TextStyle(fontSize: 20),
                   decoration: InputDecoration(
                       filled: true,
                       fillColor: Colors.white,
-                      suffixIcon: Icon(Icons.person),
+                      prefixIcon: Icon(Icons.person),
+                      suffixIcon: Icon(Icons.check),
                       contentPadding: EdgeInsets.all(10),
                       border: OutlineInputBorder(
                         borderRadius: const BorderRadius.only(topLeft: Radius.circular(10.0), topRight: Radius.circular(10.0)),
                       ),
-                      hintText: '输入账户'),
+                      hintText: 'inputYourAccount'.i18n),
                 ),
                 TextFormField(
                   style: TextStyle(fontSize: 20),
                   decoration: InputDecoration(
                       filled: true,
                       fillColor: Colors.white,
-                      suffixIcon: Icon(Icons.password),
+                      prefixIcon: Icon(Icons.password),
+                      suffixIcon: Icon(Icons.remove_red_eye),
                       contentPadding: EdgeInsets.all(10),
                       border: OutlineInputBorder(
                         borderRadius: const BorderRadius.only(bottomLeft: Radius.circular(10.0), bottomRight: Radius.circular(10.0)),
                       ),
-                      hintText: '输入密码'),
+                      hintText: 'inputYourPassword'.i18n),
                 ),
                 Row(
-                  children: [Checkbox(value: false, onChanged: (v) {}), Text("同意许可协议")],
+                  children: [Checkbox(value: false, onChanged: (v) {}), Text("agreeLicense".i18n)],
                 ),
                 Center(
                   child: ElevatedButton(
@@ -68,7 +60,7 @@ class Login extends StatelessWidget {
                       onPressed: () {
                         Navigator.pushNamed(context, "/home");
                       },
-                      child: Text("登录", style: TextStyle(fontSize: 20))),
+                      child: Text("loginBtn".i18n, style: TextStyle(fontSize: 20))),
                 )
               ],
             ),
@@ -80,8 +72,8 @@ class Login extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      TextButton(onPressed: () => {Navigator.pushNamed(context, "/auth/signup")}, child: Text("注册")),
-                      TextButton(onPressed: () => {Navigator.pushNamed(context, "/user/findpassword")}, child: Text("找回密码"))
+                      TextButton(onPressed: () => {Navigator.pushNamed(context, "/auth/signup")}, child: Text("signupLink".i18n)),
+                      TextButton(onPressed: () => {Navigator.pushNamed(context, "/user/findpassword")}, child: Text("findPasswordLink".i18n))
                     ],
                   ),
                   Row(
