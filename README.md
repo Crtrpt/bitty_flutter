@@ -12,3 +12,13 @@
     - 好友列表
     - 聊天页面
     - 用户信息页面
+
+## test
+```
+flutter drive  --driver=test_driver/integration_test.dart --target=integration_test\screenshot_test.dart
+```
+
+## doc
+```
+docsify serve docs
+```
