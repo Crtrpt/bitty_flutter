@@ -3,10 +3,11 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:integration_test/integration_test.dart';
 
 void main() {
-  group('end-to-end test', () {
-    final binding = IntegrationTestWidgetsFlutterBinding.ensureInitialized() as IntegrationTestWidgetsFlutterBinding;
+  group('运行截图测试', () {
+    final binding = IntegrationTestWidgetsFlutterBinding.ensureInitialized()
+        as IntegrationTestWidgetsFlutterBinding;
     IntegrationTestWidgetsFlutterBinding.ensureInitialized();
-    testWidgets('tap on the floating action button, verify counter', (WidgetTester tester) async {
+    testWidgets('屏幕显示截图', (WidgetTester tester) async {
       app.main();
 
       // This is required prior to taking the screenshot (Android only).
