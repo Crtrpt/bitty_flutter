@@ -23,6 +23,7 @@ dependencies:
   video_player: ^2.3.0
   flutter_markdown: ^0.6.9+1 #markdown 支持
   font_awesome_flutter: ^10.1.0
+  vm_service: ^7.5.0
 #  qr_code_scanner: ^1.0.0-alpha.1
 
 dev_dependencies:

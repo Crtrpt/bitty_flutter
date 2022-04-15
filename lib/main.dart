@@ -17,6 +17,7 @@ class Bitty extends StatelessWidget {
   Widget build(BuildContext context) {
     var isLogin = false;
     return MaterialApp(
+        key: Key("home"),
         localizationsDelegates: [
           GlobalMaterialLocalizations.delegate,
           GlobalWidgetsLocalizations.delegate,
