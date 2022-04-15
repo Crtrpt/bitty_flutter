@@ -2,10 +2,10 @@ import 'package:i18n_extension/i18n_extension.dart';
 
 extension Localization on String {
   static final _t = Translations.from("en_us", {
-    "recent": {"en_us": "recent", "zh-cn": "最新"},
-    "last": {"en_us": "last message", "zh-cn": "最新消息"},
+    "recent": {"en_us": "Recent", "zh-cn": "最新"},
+    "last": {"en_us": "Message", "zh-cn": "最新消息"},
     "connector": {"en_us": "connector", "zh-cn": "通讯录"},
-    "me": {"en_us": "me", "zh-cn": "我"},
+    "me": {"en_us": "Me", "zh-cn": "我"},
     "inputYourAccount": {"en_us": "account", "zh-cn": "输入你的账户"},
     "inputYourPassword": {"en_us": "password", "zh-cn": "密码"},
     "inputYourEmail": {"en_us": "email", "zh-cn": "输入你的电子邮箱"},

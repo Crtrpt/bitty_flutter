@@ -13,25 +13,27 @@ class Avatar extends StatelessWidget {
       height: size,
       child: Stack(
         children: [
-          Container(
-            decoration: BoxDecoration(
-              boxShadow: [
-                BoxShadow(
-                  color: Color(0x10000000),
-                  blurRadius: .1,
-                  spreadRadius: 0.5,
-                ), //BoxShadow
-              ],
-              borderRadius: new BorderRadius.all(Radius.circular(100)),
+          Positioned.fill(
+            child: Container(
+              decoration: BoxDecoration(
+                boxShadow: [
+                  BoxShadow(
+                    color: Color(0x10000000),
+                    blurRadius: .1,
+                    spreadRadius: 0.5,
+                  ), //BoxShadow
+                ],
+                borderRadius: new BorderRadius.all(Radius.circular(100)),
+              ),
+              padding: EdgeInsets.all(0),
+              child: Image.asset(
+                'assets/images/' + faker.randomGenerator.integer(5).toString() + '.png',
+                width: size! - 10,
+                height: size! - 10,
+              ),
             ),
-            padding: EdgeInsets.all(0),
-            child: Positioned.fill(
-                child: Image.asset(
-              'assets/images/' + faker.randomGenerator.integer(5).toString() + '.png',
-              width: size! - 10,
-              height: size! - 10,
-            )),
           ),
+
           // Positioned(left: 0, bottom: 0, child: Icon(Icons.android_outlined)),
           Positioned(
               right: 0,

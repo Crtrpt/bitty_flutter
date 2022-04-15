@@ -1,4 +1,5 @@
 import 'package:dino/data/endpointList.dart';
+import 'package:dino/i18n/default.i18n.dart';
 import 'package:dino/utils/listBehavior.dart';
 import 'package:flutter/material.dart';
 
@@ -34,7 +35,7 @@ class _endpointState extends State<AllEndpoint> {
           centerTitle: true,
           elevation: 0.5,
           title: Text(
-            "通讯录(" + endpointList.length.toString() + ")",
+            "connector".i18n + "(" + endpointList.length.toString() + ")",
             style: TextStyle(
               fontSize: 18,
               color: Colors.grey,
