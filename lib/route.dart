@@ -1,10 +1,11 @@
 import 'package:dino/page/home.dart';
+import 'package:dino/page/systemMessage/messageDetail.dart';
+import 'package:dino/page/systemMessage/systemMessage.dart';
 import 'package:dino/page/user/chart.dart';
 import 'package:dino/page/user/profile.dart';
 import 'package:dino/page/user/search.dart';
 import 'package:dino/page/user/session.dart';
 import 'package:dino/page/user/sessionSetting.dart';
-import 'package:dino/page/user/systemMessage.dart';
 import 'package:dino/page/user/userCard.dart';
 import 'package:dino/page/user/userSetting.dart';
 import 'package:flutter/material.dart';
@@ -45,5 +46,7 @@ Map<String, Widget Function(BuildContext)> route = {
   '/user/search': (context) => Search(),
   //系统消息
   '/system/message': (context) => SystemMessage(),
+  //系统详情
+  '/system/messageDetail': (context) => MessageDetail(),
   // "/tool/qrscan": (context) => QRViewExample()
 };

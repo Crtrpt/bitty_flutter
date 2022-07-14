@@ -2,7 +2,7 @@ import 'package:faker/faker.dart';
 
 getSessionList() {
   List<Map<String, dynamic>> list = [];
-  for (var i = 0; i < faker.randomGenerator.integer(200); i++) {
+  for (var i = 0; i < 5; i++) {
     var name = faker.person.name();
     list.add({
       "id": i,
