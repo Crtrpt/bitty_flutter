@@ -5,11 +5,6 @@ class SelectLanguage extends StatelessWidget {
     {"name": "自动"},
     {"name": "英文"},
     {"name": "中文"},
-    {"name": "俄文"},
-    {"name": "日文"},
-    {"name": "法语"},
-    {"name": "德语"},
-    {"name": "葡萄牙"},
   ];
 
   @override

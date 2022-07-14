@@ -24,8 +24,8 @@ class Bitty extends StatelessWidget {
           GlobalCupertinoLocalizations.delegate,
         ],
         supportedLocales: [
-          const Locale('en', "US"),
           const Locale('zh', "CN"),
+          const Locale('en', "US"),
         ],
         title: 'Dino',
         routes: route,

@@ -1,6 +1,6 @@
 import 'package:faker/faker.dart';
 
-getEndpointList() {
+getSessionList() {
   List<Map<String, dynamic>> list = [];
   for (var i = 0; i < faker.randomGenerator.integer(200); i++) {
     var name = faker.person.name();

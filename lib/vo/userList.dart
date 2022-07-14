@@ -1,1 +1,1 @@
-class Endpoint {}
+class Session {}

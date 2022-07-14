@@ -1,21 +1,21 @@
 import 'package:flutter/material.dart';
 
-import '_endpoint_avatar.dart';
+import '_session_avatar.dart';
 
-class EndpointCard extends StatelessWidget {
-  var endpoint;
+class SessionCard extends StatelessWidget {
+  var session;
 
-  EndpointCard(this.endpoint);
+  SessionCard(this.session);
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
         onTap: () => {Navigator.pushNamed(context, "/user/chart")},
         child: Container(
-          color: endpoint["is_pin"] ? Colors.black12 : Colors.white,
+          color: session["is_pin"] ? Colors.black12 : Colors.white,
           padding: EdgeInsets.fromLTRB(10, 5, 10, 5),
           child: Flex(direction: Axis.horizontal, children: [
-            EndpointAvatar(endpoint),
+            SessionAvatar(session),
             Expanded(
                 child: Padding(
               padding: EdgeInsets.only(left: 10, right: 10, top: 0, bottom: 0),
@@ -28,18 +28,18 @@ class EndpointCard extends StatelessWidget {
                     children: [
                       Expanded(
                         child: Text(
-                          endpoint['name']!,
+                          session['name']!,
                           style: TextStyle(color: Colors.black87, fontSize: 14),
                         ),
                       ),
                       Text(
-                        endpoint['last_time']!,
+                        session['last_time']!,
                         style: TextStyle(color: Colors.grey, fontSize: 12),
                       ),
                     ],
                   )),
                   Text(
-                    endpoint['last_msg']!,
+                    session['last_msg']!,
                     style: TextStyle(color: Colors.grey, fontSize: 12),
                   )
                 ],

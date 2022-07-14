@@ -1,10 +1,10 @@
 import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 
-class EndpointAvatar extends StatelessWidget {
-  var endpoint;
+class SessionAvatar extends StatelessWidget {
+  var session;
 
-  EndpointAvatar(this.endpoint);
+  SessionAvatar(this.session);
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +33,7 @@ class EndpointAvatar extends StatelessWidget {
                 )),
           ),
           // Positioned(left: 0, bottom: 0, child: Icon(Icons.android_outlined)),
-          if (endpoint['is_important']) ...[
+          if (session['is_important']) ...[
             Positioned(
                 top: 0,
                 right: 0,

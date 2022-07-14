@@ -25,9 +25,6 @@ class SelectTheme extends StatelessWidget {
                               ListTile(
                                 title: Text("黑夜"),
                               ),
-                              ListTile(
-                                title: Text("冬天的雪"),
-                              ),
                             ],
                           ),
                         ),

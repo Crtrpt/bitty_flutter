@@ -77,7 +77,8 @@ class Login extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       TextButton(onPressed: () => {Navigator.pushNamed(context, "/auth/signup")}, child: Text("signupLink".i18n)),
-                      TextButton(onPressed: () => {Navigator.pushNamed(context, "/user/findpassword")}, child: Text("findPasswordLink".i18n))
+                      TextButton(onPressed: () => {Navigator.pushNamed(context, "/user/findpassword")}, child: Text("findPasswordLink".i18n)),
+                      TextButton(onPressed: () => {Navigator.pushNamed(context, "/system/setting")}, child: Text("systemSettingLink".i18n))
                     ],
                   ),
                   Row(

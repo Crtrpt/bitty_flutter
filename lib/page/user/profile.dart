@@ -52,18 +52,8 @@ class Profile extends StatelessWidget {
       SliverFillRemaining(
           child: Container(
         padding: EdgeInsets.all(10),
-        child: Column(children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Text("是否被搜索到"),
-              Switch(
-                value: true,
-                onChanged: (i) => {},
-              )
-            ],
-          )
+        child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+          ElevatedButton(onPressed: () => {Navigator.pushNamed(context, "/system/setting")}, child: Text("设置")),
         ]),
       )),
     ]));

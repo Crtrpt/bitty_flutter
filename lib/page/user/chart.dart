@@ -3,8 +3,8 @@ import 'package:dino/utils/listBehavior.dart';
 import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 
-import '../_msg.dart';
-import '../_publishbox.dart';
+import '_msg.dart';
+import '_publishbox.dart';
 
 class Chart extends StatefulWidget {
   @override
@@ -12,7 +12,7 @@ class Chart extends StatefulWidget {
 }
 
 class ChartState extends State<Chart> {
-  var endpoint;
+  var session;
   var msgList = [];
 
   var expand = false;
@@ -41,30 +41,11 @@ class ChartState extends State<Chart> {
         actions: [
           IconButton(
               color: Colors.grey,
-              icon: Icon(Icons.video_call),
-              onPressed: () {
-                Navigator.pushNamed(context, "/tool/qrscan");
-              }),
-          IconButton(
-              color: Colors.grey,
               icon: Icon(Icons.more_vert_sharp),
               onPressed: () {
-                Navigator.pushNamed(context, "/tool/qrscan");
+                Navigator.pushNamed(context, "/user/sessionSetting");
               })
         ],
-      ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.startDocked,
-      floatingActionButton: Draggable(
-        child: FloatingActionButton(
-          onPressed: () {},
-          child: Icon(Icons.keyboard_voice),
-        ),
-        childWhenDragging: Container(),
-        feedback: FloatingActionButton(
-          elevation: 0.2,
-          onPressed: () {},
-          child: Icon(Icons.keyboard_voice),
-        ),
       ),
       body: Center(
         child: Column(

@@ -14,6 +14,7 @@ extension Localization on String {
     "signupLink": {"en_us": "Signup", "zh-cn": "注册"},
     "signupBtn": {"en_us": "Signup", "zh-cn": "登录"},
     "findPasswordLink": {"en_us": "Find my password", "zh-cn": "找回密码"},
+    "systemSettingLink": {"en_us": "Setting", "zh-cn": "设置"},
   });
 
   String get i18n => localize(this, _t);
