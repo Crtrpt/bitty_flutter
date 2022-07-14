@@ -13,6 +13,7 @@ import './page/auth/findpassword.dart';
 import './page/auth/login.dart';
 import './page/auth/reset.dart';
 import './page/auth/signup.dart';
+import 'page/auth/license.dart';
 
 Map<String, Widget Function(BuildContext)> route = {
   '/home': (context) => MyHomePage(),
@@ -20,6 +21,8 @@ Map<String, Widget Function(BuildContext)> route = {
   '/auth/login': (context) => Login(),
   //注册
   '/auth/signup': (context) => Signup(),
+  //授权许可
+  '/license': (context) => License(),
   //重置
   '/auth/reset': (context) => Reset(),
   //找回密码

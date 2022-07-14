@@ -1,4 +1,3 @@
-import 'package:dino/i18n/default.i18n.dart';
 import 'package:flutter/material.dart';
 
 class Signup extends StatelessWidget {
@@ -38,7 +37,7 @@ class Signup extends StatelessWidget {
                       border: OutlineInputBorder(
                         borderRadius: const BorderRadius.only(topLeft: Radius.circular(10.0), topRight: Radius.circular(10.0)),
                       ),
-                      hintText: 'inputYourAccount'.i18n),
+                      hintText: "账号"),
                 ),
                 TextFormField(
                   style: TextStyle(fontSize: 20),
@@ -49,9 +48,9 @@ class Signup extends StatelessWidget {
                       suffixIcon: Icon(Icons.remove_red_eye),
                       contentPadding: EdgeInsets.all(10),
                       border: OutlineInputBorder(
-                          // borderRadius: const BorderRadius.only(bottomLeft: Radius.circular(10.0), bottomRight: Radius.circular(10.0)),
-                          ),
-                      hintText: 'inputYourPassword'.i18n),
+                        borderRadius: BorderRadius.all(Radius.zero),
+                      ),
+                      hintText: "密码"),
                 ),
                 TextFormField(
                   style: TextStyle(fontSize: 20),
@@ -64,10 +63,18 @@ class Signup extends StatelessWidget {
                       border: OutlineInputBorder(
                         borderRadius: const BorderRadius.only(bottomLeft: Radius.circular(10.0), bottomRight: Radius.circular(10.0)),
                       ),
-                      hintText: 'inputYourEmail'.i18n),
+                      hintText: "邮箱"),
                 ),
                 Row(
-                  children: [Checkbox(value: false, onChanged: (v) {}), Text("agreeLicense".i18n)],
+                  children: [
+                    Checkbox(value: false, onChanged: (v) {}),
+                    TextButton(
+                      onPressed: () {
+                        Navigator.pushNamed(context, "/license");
+                      },
+                      child: Text("我同意授权许可协议"),
+                    )
+                  ],
                 ),
                 Center(
                   child: ElevatedButton(
@@ -81,7 +88,7 @@ class Signup extends StatelessWidget {
                       onPressed: () {
                         Navigator.pushNamed(context, "/home");
                       },
-                      child: Text("signupBtn".i18n, style: TextStyle(fontSize: 20))),
+                      child: Text("注册", style: TextStyle(fontSize: 20))),
                 )
               ],
             ),

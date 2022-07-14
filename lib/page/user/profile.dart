@@ -1,6 +1,8 @@
 import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 
+import '../../main.dart';
+
 class Profile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -54,6 +56,12 @@ class Profile extends StatelessWidget {
         padding: EdgeInsets.all(10),
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
           ElevatedButton(onPressed: () => {Navigator.pushNamed(context, "/system/setting")}, child: Text("设置")),
+          ElevatedButton(
+              onPressed: () {
+                state.Logout();
+                Navigator.pushNamed(context, "/auth/login");
+              },
+              child: Text("退出登陆")),
         ]),
       )),
     ]));

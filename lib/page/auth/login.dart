@@ -1,5 +1,6 @@
-import 'package:dino/i18n/default.i18n.dart';
 import 'package:flutter/material.dart';
+
+import '../../main.dart';
 
 class Login extends StatelessWidget {
   @override
@@ -12,11 +13,6 @@ class Login extends StatelessWidget {
       child: Form(
           child: Stack(
         children: [
-          // Positioned(
-          //   top: 0,
-          //   bottom: 0,
-          //   child: Image.network("https://bing.nanxiongnandi.com/202204/NorwayBoulder_1920x1080.jpg"),
-          // ),
           Positioned(
               child: Padding(
             padding: EdgeInsets.only(top: 240, left: 10, right: 10),
@@ -34,7 +30,7 @@ class Login extends StatelessWidget {
                       border: OutlineInputBorder(
                         borderRadius: const BorderRadius.only(topLeft: Radius.circular(10.0), topRight: Radius.circular(10.0)),
                       ),
-                      hintText: 'inputYourAccount'.i18n),
+                      hintText: "输入登陆账号"),
                 ),
                 TextFormField(
                   style: TextStyle(fontSize: 20),
@@ -47,10 +43,21 @@ class Login extends StatelessWidget {
                       border: OutlineInputBorder(
                         borderRadius: const BorderRadius.only(bottomLeft: Radius.circular(10.0), bottomRight: Radius.circular(10.0)),
                       ),
-                      hintText: 'inputYourPassword'.i18n),
+                      hintText: "输入登陆密码"),
                 ),
-                Row(
-                  children: [Checkbox(value: false, onChanged: (v) {}), Text("agreeLicense".i18n)],
+                Padding(
+                  padding: const EdgeInsets.all(0.0),
+                  child: Row(
+                    children: [
+                      Checkbox(tristate: false, value: false, onChanged: (v) {}),
+                      TextButton(
+                        onPressed: () {
+                          Navigator.pushNamed(context, "/license");
+                        },
+                        child: Text("我同意授权许可协议"),
+                      )
+                    ],
+                  ),
                 ),
                 Center(
                   child: ElevatedButton(
@@ -62,9 +69,10 @@ class Login extends StatelessWidget {
                         ),
                       ),
                       onPressed: () {
+                        state.setLogin(null);
                         Navigator.pushNamed(context, "/home");
                       },
-                      child: Text("loginBtn".i18n, style: TextStyle(fontSize: 20))),
+                      child: Text("登陆", style: TextStyle(fontSize: 20))),
                 )
               ],
             ),
@@ -76,9 +84,8 @@ class Login extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      TextButton(onPressed: () => {Navigator.pushNamed(context, "/auth/signup")}, child: Text("signupLink".i18n)),
-                      TextButton(onPressed: () => {Navigator.pushNamed(context, "/user/findpassword")}, child: Text("findPasswordLink".i18n)),
-                      TextButton(onPressed: () => {Navigator.pushNamed(context, "/system/setting")}, child: Text("systemSettingLink".i18n))
+                      TextButton(onPressed: () => {Navigator.pushNamed(context, "/auth/signup")}, child: Text("去注册")),
+                      TextButton(onPressed: () => {Navigator.pushNamed(context, "/auth/findpassword")}, child: Text("找回密码")),
                     ],
                   ),
                   Row(

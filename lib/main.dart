@@ -6,16 +6,19 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 
 import 'state/appState.dart';
 
+var state = null;
 Future<void> main() async {
   //初始化状态
-  new AppState();
+  state = new AppState();
+  state.Init();
   runApp(Bitty());
 }
 
 class Bitty extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    var isLogin = false;
+    var isLogin = state.IsLogin;
+    print("用户登陆状态" + isLogin.toString());
     return MaterialApp(
         key: Key("home"),
         localizationsDelegates: [
