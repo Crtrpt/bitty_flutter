@@ -28,14 +28,14 @@ class _PublishBox extends State<PublishBox> {
               children: [
                 Container(
                   child: IconButton(
-                    icon: Icon(Icons.multitrack_audio),
+                    icon: Icon(Icons.mic),
                     color: Colors.grey,
                     onPressed: () {},
                   ),
                 ),
                 Expanded(
                     child: TextField(
-                  decoration: InputDecoration(enabledBorder: null, hintText: "send message"),
+                  decoration: InputDecoration(enabledBorder: null, hintText: "发送消息"),
                   maxLines: 1,
                 )),
                 Container(

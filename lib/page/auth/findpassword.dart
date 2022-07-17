@@ -15,11 +15,6 @@ class FindPassword extends StatelessWidget {
       child: Form(
           child: Stack(
         children: [
-          // Positioned(
-          //   top: 0,
-          //   bottom: 0,
-          //   child: Image.network("https://bing.nanxiongnandi.com/202204/NorwayBoulder_1920x1080.jpg"),
-          // ),
           Positioned(
               child: Padding(
             padding: EdgeInsets.only(top: 180, left: 10, right: 10),

@@ -1,8 +1,40 @@
+import 'package:dino/page/auth/loginForm.dart';
 import 'package:flutter/material.dart';
 
 import '../../main.dart';
 
-class Login extends StatelessWidget {
+class Login extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() => _Login();
+}
+
+class _Login extends State<Login> {
+  Loginform form = new Loginform();
+  late TextEditingController account;
+  late TextEditingController password;
+  @override
+  void initState() {
+    super.initState();
+    account = new TextEditingController();
+    password = new TextEditingController();
+    account.addListener(() {
+      form.account = account.value.text.toString();
+    });
+    password.addListener(() {
+      form.password = password.value.text.toString();
+    });
+    print(form);
+  }
+
+  @override
+  void dispose() {
+    // Clean up the controller when the widget is removed from the
+    // widget tree.
+    account.dispose();
+    password.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,6 +52,7 @@ class Login extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 TextFormField(
+                  controller: account,
                   style: TextStyle(fontSize: 20),
                   decoration: InputDecoration(
                       filled: true,
@@ -33,6 +66,7 @@ class Login extends StatelessWidget {
                       hintText: "输入登陆账号"),
                 ),
                 TextFormField(
+                  controller: password,
                   style: TextStyle(fontSize: 20),
                   decoration: InputDecoration(
                       filled: true,
@@ -49,7 +83,13 @@ class Login extends StatelessWidget {
                   padding: const EdgeInsets.all(0.0),
                   child: Row(
                     children: [
-                      Checkbox(tristate: false, value: false, onChanged: (v) {}),
+                      Checkbox(
+                          value: form.rememenber,
+                          onChanged: (v) {
+                            setState(() {
+                              form.rememenber = v;
+                            });
+                          }),
                       TextButton(
                         onPressed: () {
                           Navigator.pushNamed(context, "/license");
@@ -69,8 +109,27 @@ class Login extends StatelessWidget {
                         ),
                       ),
                       onPressed: () {
-                        state.setLogin(null);
-                        Navigator.pushNamed(context, "/home");
+                        state.Login(form).then((value) {
+                          Navigator.pushNamed(context, "/home");
+                        }).catchError((e) {
+                          print(e);
+                          showDialog<String>(
+                              context: context,
+                              builder: (BuildContext context) => AlertDialog(
+                                    title: const Text('提示'),
+                                    content: Text(e.toString()),
+                                    actions: <Widget>[
+                                      TextButton(
+                                        onPressed: () => {Navigator.popAndPushNamed(context, "/auth/findpassword")},
+                                        child: const Text('找回密码'),
+                                      ),
+                                      TextButton(
+                                        onPressed: () => Navigator.pop(context, 'OK'),
+                                        child: const Text('返回'),
+                                      ),
+                                    ],
+                                  ));
+                        });
                       },
                       child: Text("登陆", style: TextStyle(fontSize: 20))),
                 )

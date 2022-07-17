@@ -6,7 +6,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 
 import 'state/appState.dart';
 
-var state = null;
+late AppState state;
 Future<void> main() async {
   //初始化状态
   state = new AppState();

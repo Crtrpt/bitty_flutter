@@ -11,7 +11,7 @@ class UserCard extends StatelessWidget {
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
-          children: [Text("用户名片")],
+          children: [TextButton(onPressed: () => {}, child: Text('添加为好友'))],
         ),
       ),
     );
