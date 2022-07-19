@@ -1,6 +1,40 @@
+import 'package:dino/page/auth/resetpassword.dart';
 import 'package:flutter/material.dart';
 
-class FindPassword extends StatelessWidget {
+import '../../main.dart';
+
+class FindPassword extends StatefulWidget {
+  @override
+  State<FindPassword> createState() => _FindPasswordState();
+}
+
+class _FindPasswordState extends State<FindPassword> {
+  ResetPasswordform form = new ResetPasswordform();
+  late TextEditingController account;
+  late TextEditingController password;
+  late TextEditingController email;
+  late TextEditingController code;
+  @override
+  void initState() {
+    super.initState();
+    account = new TextEditingController();
+    password = new TextEditingController();
+    email = new TextEditingController();
+    code = new TextEditingController();
+    account.addListener(() {
+      form.account = account.value.text.toString();
+    });
+    password.addListener(() {
+      form.password = password.value.text.toString();
+    });
+    email.addListener(() {
+      form.email = email.value.text.toString();
+    });
+    code.addListener(() {
+      form.code = code.value.text.toString();
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,6 +56,7 @@ class FindPassword extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 TextFormField(
+                  controller: account,
                   style: TextStyle(fontSize: 20),
                   decoration: InputDecoration(
                       filled: true,
@@ -36,6 +71,7 @@ class FindPassword extends StatelessWidget {
                 ),
                 TextFormField(
                   style: TextStyle(fontSize: 20),
+                  controller: email,
                   decoration: InputDecoration(
                       filled: true,
                       fillColor: Colors.white,
@@ -59,13 +95,40 @@ class FindPassword extends StatelessWidget {
                           ),
                         ),
                         onPressed: () {
-                          //TODO  发送验证码
+                          state.sendCode(form).then((value) {
+                            showDialog<String>(
+                                context: context,
+                                builder: (BuildContext context) => AlertDialog(
+                                      title: const Text('提示'),
+                                      content: Text("发送验证码成功"),
+                                      actions: <Widget>[
+                                        TextButton(
+                                          onPressed: () => Navigator.pop(context, 'OK'),
+                                          child: const Text('返回'),
+                                        ),
+                                      ],
+                                    ));
+                          }).catchError((e) {
+                            showDialog<String>(
+                                context: context,
+                                builder: (BuildContext context) => AlertDialog(
+                                      title: const Text('提示'),
+                                      content: Text(e.toString()),
+                                      actions: <Widget>[
+                                        TextButton(
+                                          onPressed: () => Navigator.pop(context, 'OK'),
+                                          child: const Text('返回'),
+                                        ),
+                                      ],
+                                    ));
+                          });
                         },
                         child: Text("发送验证码", style: TextStyle(fontSize: 20))),
                   ),
                 ),
                 TextFormField(
                   style: TextStyle(fontSize: 20),
+                  controller: code,
                   decoration: InputDecoration(
                       filled: true,
                       fillColor: Colors.white,
@@ -78,6 +141,7 @@ class FindPassword extends StatelessWidget {
                       hintText: "验证码"),
                 ),
                 TextFormField(
+                  controller: password,
                   style: TextStyle(fontSize: 20),
                   decoration: InputDecoration(
                       filled: true,
@@ -102,7 +166,33 @@ class FindPassword extends StatelessWidget {
                           ),
                         ),
                         onPressed: () {
-                          Navigator.pushNamed(context, "/home");
+                          state.resetPassword(form).then((value) {
+                            showDialog<String>(
+                                context: context,
+                                builder: (BuildContext context) => AlertDialog(
+                                      title: const Text('提示'),
+                                      content: Text("重置密码成功"),
+                                      actions: <Widget>[
+                                        TextButton(
+                                          onPressed: () => {Navigator.popAndPushNamed(context, "/auth/login")},
+                                          child: const Text('去登陆'),
+                                        ),
+                                      ],
+                                    ));
+                          }).catchError((e) {
+                            showDialog<String>(
+                                context: context,
+                                builder: (BuildContext context) => AlertDialog(
+                                      title: const Text('提示'),
+                                      content: Text(e.toString()),
+                                      actions: <Widget>[
+                                        TextButton(
+                                          onPressed: () => Navigator.pop(context, 'OK'),
+                                          child: const Text('返回'),
+                                        ),
+                                      ],
+                                    ));
+                          });
                         },
                         child: Text("确认", style: TextStyle(fontSize: 20))),
                   ),

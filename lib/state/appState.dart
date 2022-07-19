@@ -1,6 +1,8 @@
 import 'dart:convert';
 
 import 'package:dino/page/auth/loginForm.dart';
+import 'package:dino/page/auth/resetpassword.dart';
+import 'package:dino/page/auth/signupForm.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -9,6 +11,7 @@ import '../api/api.dart';
 class AppState {
   bool IsLogin = false;
   String token = "";
+  String version = "v0.0.1";
 
   SharedPreferences? prefs;
 
@@ -22,7 +25,6 @@ class AppState {
     } catch (e) {
       print("ERROR--------------" + e.toString());
       WidgetsFlutterBinding.ensureInitialized();
-      return 0;
     }
   }
 
@@ -35,19 +37,34 @@ class AppState {
   }
 
   Future<bool> Login(Loginform payload) async {
-    print("登陆======");
-    print(payload);
     var res = await Api.post("/api/v1/auth/login", body: payload);
     if (res["code"] == 0) {
       IsLogin = true;
       token = res['data'];
       Api.defaultHeader.putIfAbsent("token", () => token);
-      print("登陆成功");
     } else {
-      return Future.error("账号密码错误");
+      return Future.error(res["message"]);
     }
     save();
     return Future.value(false);
+  }
+
+  Future<bool> Signup(Signupform payload) async {
+    var res = await Api.post("/api/v1/auth/signup", body: payload);
+    if (res["code"] == 0) {
+      return Future.value(true);
+    } else {
+      return Future.error(res["message"]);
+    }
+  }
+
+  Future<bool> sendCode(ResetPasswordform payload) async {
+    var res = await Api.post("/api/v1/auth/sendcode", body: payload);
+    if (res["code"] == 0) {
+      return Future.value(true);
+    } else {
+      return Future.error(res["message"]);
+    }
   }
 
   Logout() {
@@ -67,5 +84,14 @@ class AppState {
       'IsLogin': IsLogin,
       'token': token,
     };
+  }
+
+  resetPassword(ResetPasswordform payload) async {
+    var res = await Api.post("/api/v1/auth/resetpassword", body: payload);
+    if (res["code"] == 0) {
+      return Future.value(true);
+    } else {
+      return Future.error(res["message"]);
+    }
   }
 }

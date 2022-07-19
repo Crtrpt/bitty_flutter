@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:io';
 
+import 'package:dino/config.dart';
 import 'package:http/http.dart' as http;
 
 class Api {
@@ -25,7 +26,14 @@ class Api {
     var strbody = json.encode(body);
     ;
     var h = (new Map<String, String>.from(Api.defaultHeader));
+
+    h.putIfAbsent("version", () => Config.version);
+    h.putIfAbsent("platform", () => Config.platform);
+
+    print(path);
     print(h);
+    print(body);
+
     var response = await http.post(
       Uri.parse(uri),
       headers: h,

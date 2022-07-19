@@ -1,6 +1,45 @@
+import 'package:dino/page/auth/signupForm.dart';
 import 'package:flutter/material.dart';
 
-class Signup extends StatelessWidget {
+import '../../main.dart';
+
+class Signup extends StatefulWidget {
+  @override
+  State<Signup> createState() => _SignupState();
+}
+
+class _SignupState extends State<Signup> {
+  Signupform form = new Signupform();
+  late TextEditingController account;
+  late TextEditingController password;
+  late TextEditingController email;
+  @override
+  void initState() {
+    super.initState();
+    account = new TextEditingController();
+    password = new TextEditingController();
+    email = new TextEditingController();
+    account.addListener(() {
+      form.account = account.value.text.toString();
+    });
+    password.addListener(() {
+      form.password = password.value.text.toString();
+    });
+    email.addListener(() {
+      form.email = email.value.text.toString();
+    });
+  }
+
+  @override
+  void dispose() {
+    // Clean up the controller when the widget is removed from the
+    // widget tree.
+    account.dispose();
+    password.dispose();
+    email.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,6 +67,7 @@ class Signup extends StatelessWidget {
               children: [
                 TextFormField(
                   style: TextStyle(fontSize: 20),
+                  controller: account,
                   decoration: InputDecoration(
                       filled: true,
                       fillColor: Colors.white,
@@ -41,6 +81,7 @@ class Signup extends StatelessWidget {
                 ),
                 TextFormField(
                   style: TextStyle(fontSize: 20),
+                  controller: password,
                   decoration: InputDecoration(
                       filled: true,
                       fillColor: Colors.white,
@@ -54,6 +95,7 @@ class Signup extends StatelessWidget {
                 ),
                 TextFormField(
                   style: TextStyle(fontSize: 20),
+                  controller: email,
                   decoration: InputDecoration(
                       filled: true,
                       fillColor: Colors.white,
@@ -86,7 +128,37 @@ class Signup extends StatelessWidget {
                         ),
                       ),
                       onPressed: () {
-                        Navigator.pushNamed(context, "/home");
+                        state.Signup(form).then((value) {
+                          showDialog<String>(
+                              context: context,
+                              builder: (BuildContext context) => AlertDialog(
+                                    title: const Text('提示'),
+                                    content: Text("注册成功"),
+                                    actions: <Widget>[
+                                      TextButton(
+                                        onPressed: () => {Navigator.popAndPushNamed(context, "/auth/login")},
+                                        child: const Text('去登陆'),
+                                      )
+                                    ],
+                                  ));
+                        }).catchError((e) {
+                          showDialog<String>(
+                              context: context,
+                              builder: (BuildContext context) => AlertDialog(
+                                    title: const Text('提示'),
+                                    content: Text(e.toString()),
+                                    actions: <Widget>[
+                                      TextButton(
+                                        onPressed: () => {Navigator.popAndPushNamed(context, "/auth/findpassword")},
+                                        child: const Text('找回密码'),
+                                      ),
+                                      TextButton(
+                                        onPressed: () => Navigator.pop(context, 'OK'),
+                                        child: const Text('返回'),
+                                      ),
+                                    ],
+                                  ));
+                        });
                       },
                       child: Text("注册", style: TextStyle(fontSize: 20))),
                 )
