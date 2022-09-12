@@ -37,33 +37,34 @@ class AppState {
   }
 
   Future<bool> Login(Loginform payload) async {
-    var res = await Api.post("/api/v1/auth/login", body: payload);
+    var res = await Api.post("auth/login", body: payload);
+    print("==============================================");
     if (res["code"] == 0) {
       IsLogin = true;
-      token = res['data'];
+      token = res['data']['token'];
       Api.defaultHeader.putIfAbsent("token", () => token);
     } else {
-      return Future.error(res["message"]);
+      return Future.error(res["msg"]);
     }
     save();
     return Future.value(false);
   }
 
   Future<bool> Signup(Signupform payload) async {
-    var res = await Api.post("/api/v1/auth/signup", body: payload);
+    var res = await Api.post("auth/signup", body: payload);
     if (res["code"] == 0) {
       return Future.value(true);
     } else {
-      return Future.error(res["message"]);
+      return Future.error(res["msg"]);
     }
   }
 
   Future<bool> sendCode(ResetPasswordform payload) async {
-    var res = await Api.post("/api/v1/auth/sendcode", body: payload);
+    var res = await Api.post("auth/sendcode", body: payload);
     if (res["code"] == 0) {
       return Future.value(true);
     } else {
-      return Future.error(res["message"]);
+      return Future.error(res["msg"]);
     }
   }
 
@@ -87,11 +88,11 @@ class AppState {
   }
 
   resetPassword(ResetPasswordform payload) async {
-    var res = await Api.post("/api/v1/auth/resetpassword", body: payload);
+    var res = await Api.post("auth/resetpassword", body: payload);
     if (res["code"] == 0) {
       return Future.value(true);
     } else {
-      return Future.error(res["message"]);
+      return Future.error(res["msg"]);
     }
   }
 }

@@ -10,7 +10,7 @@ class SessionCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-        onTap: () => {Navigator.pushNamed(context, "/user/chart")},
+        onTap: () => {Navigator.pushNamed(context, "/session/chat")},
         child: Container(
           color: session["is_pin"] ? Colors.black12 : Colors.white,
           padding: EdgeInsets.fromLTRB(10, 5, 10, 5),

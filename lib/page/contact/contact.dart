@@ -1,8 +1,9 @@
 import 'package:dino/data/sessionList.dart';
+import 'package:dino/page/contact/item.dart';
 import 'package:dino/utils/listBehavior.dart';
 import 'package:flutter/material.dart';
 
-import '_sessionCard.dart';
+import '../session/_sessionCard.dart';
 
 class Contact extends StatefulWidget {
   @override
@@ -42,7 +43,7 @@ class _sessionState extends State<Contact> {
                 icon: Icon(Icons.search),
                 color: Colors.grey,
                 onPressed: () {
-                  Navigator.pushNamed(context, "/user/search");
+                  Navigator.pushNamed(context, "/contact/search");
                 }),
           ],
         ),
@@ -52,7 +53,7 @@ class _sessionState extends State<Contact> {
             child: ListView.builder(
               padding: EdgeInsets.only(top: 0),
               itemBuilder: (context, idx) {
-                return SessionCard(this.sessionList[idx]);
+                return ContactItem(this.sessionList[idx]);
               },
               itemCount: sessionList.length,
             ),

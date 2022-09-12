@@ -3,15 +3,15 @@ import 'package:dino/utils/listBehavior.dart';
 import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 
-import '_msg.dart';
-import '_publishbox.dart';
+import '../user/_msg.dart';
+import '../user/_publishbox.dart';
 
-class Chart extends StatefulWidget {
+class Chat extends StatefulWidget {
   @override
-  State<StatefulWidget> createState() => ChartState();
+  State<StatefulWidget> createState() => ChatState();
 }
 
-class ChartState extends State<Chart> {
+class ChatState extends State<Chat> {
   var session;
   var msgList = [];
 
