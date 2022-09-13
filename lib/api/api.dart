@@ -12,7 +12,7 @@ class Api {
     HttpHeaders.hostHeader: "192.168.1.8"
   };
 
-  static Future<Map<String, Object>> get(
+  static Future<dynamic> get(
     String path,
   ) async {
     var uri = host + path;
@@ -25,7 +25,7 @@ class Api {
     }
   }
 
-  static Future<Map<String, dynamic>> post(String path,
+  static Future<dynamic> post(String path,
       {Object body = Api.defaultBody,
       Map<String, String> headers = const {}}) async {
     var uri = host + path;

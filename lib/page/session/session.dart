@@ -1,8 +1,8 @@
-import 'package:dino/data/sessionList.dart';
-import 'package:flutter/material.dart';
+import 'dart:collection';
 
-import '../user/_avatar.dart';
-import '_sessionCard.dart';
+import 'package:dino/data/sessionList.dart';
+import 'package:dino/main.dart';
+import 'package:flutter/material.dart';
 
 class Session extends StatefulWidget {
   @override
@@ -10,19 +10,21 @@ class Session extends StatefulWidget {
 }
 
 class _sessionState extends State<Session> {
-  var sessionList = [];
+  List<dynamic> sessionList = [];
 
   @override
   void initState() {
     super.initState();
-    this.sessionList = getSessionList();
+    state.getSessionList();
+    print("======================\n");
+    (state.sessionList as Map).forEach((v, k) {
+      print(v);
+      this.sessionList.add(HashMap.from(k));
+    });
   }
 
   @override
   Widget build(BuildContext context) {
-    var list = sessionList.map((e) {
-      return SessionCard(e);
-    }).toList();
     return Scaffold(
       appBar: AppBar(
         leading: null,
@@ -53,7 +55,14 @@ class _sessionState extends State<Session> {
               }),
         ],
       ),
-      body: Text("会话"),
+      body: Container(
+        child: ListView.builder(
+          itemCount: sessionList.length,
+          itemBuilder: (context, idx) {
+            return Text(sessionList[0].session.name);
+          },
+        ),
+      ),
     );
   }
 }

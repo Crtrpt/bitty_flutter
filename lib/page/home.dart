@@ -1,3 +1,4 @@
+import 'package:dino/main.dart';
 import 'package:flutter/material.dart';
 
 import 'group/group.dart';
@@ -72,8 +73,8 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
             ListTile(
               title: const Text("退出"),
               onTap: () {
-                // Update the state of the app.
-                // ...
+                Navigator.pushNamed(context, "/auth/login");
+                state.logout();
               },
             ),
           ],

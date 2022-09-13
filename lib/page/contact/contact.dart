@@ -1,4 +1,5 @@
 import 'package:dino/data/sessionList.dart';
+import 'package:dino/main.dart';
 import 'package:dino/page/contact/item.dart';
 import 'package:dino/utils/listBehavior.dart';
 import 'package:flutter/material.dart';
@@ -11,12 +12,14 @@ class Contact extends StatefulWidget {
 }
 
 class _sessionState extends State<Contact> {
-  var sessionList = [];
+  Map<dynamic, dynamic>? sessionList;
 
   @override
   void initState() {
     super.initState();
-    this.sessionList = getSessionList();
+    this.sessionList = state.sessionList;
+    print("============");
+    print(this.sessionList?.length);
   }
 
   @override
@@ -53,9 +56,9 @@ class _sessionState extends State<Contact> {
             child: ListView.builder(
               padding: EdgeInsets.only(top: 0),
               itemBuilder: (context, idx) {
-                return ContactItem(this.sessionList[idx]);
+                return Text(idx.toString());
               },
-              itemCount: sessionList.length,
+              itemCount: sessionList?.length,
             ),
           ),
         )
