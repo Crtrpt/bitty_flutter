@@ -1,5 +1,0 @@
-userinfo() {
-  return {
-    "name": "",
-  };
-}
