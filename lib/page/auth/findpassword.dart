@@ -39,13 +39,6 @@ class _FindPasswordState extends State<FindPassword> {
   Widget build(BuildContext context) {
     return Scaffold(
         body: Container(
-      decoration: BoxDecoration(
-          gradient: LinearGradient(
-        stops: [0.2, 0.5, 0.8, 0.7],
-        colors: [Colors.blue[50]!, Colors.blue[100]!, Colors.blue[200]!, Colors.blue[300]!],
-        begin: Alignment.topRight,
-        end: Alignment.bottomLeft,
-      )),
       child: Form(
           child: Stack(
         children: [
@@ -57,7 +50,6 @@ class _FindPasswordState extends State<FindPassword> {
               children: [
                 TextFormField(
                   controller: account,
-                  style: TextStyle(fontSize: 20),
                   decoration: InputDecoration(
                       filled: true,
                       fillColor: Colors.white,
@@ -65,12 +57,13 @@ class _FindPasswordState extends State<FindPassword> {
                       suffixIcon: Icon(Icons.check),
                       contentPadding: EdgeInsets.all(10),
                       border: OutlineInputBorder(
-                        borderRadius: const BorderRadius.only(topLeft: Radius.circular(10.0), topRight: Radius.circular(10.0)),
+                        borderRadius: const BorderRadius.only(
+                            topLeft: Radius.circular(10.0),
+                            topRight: Radius.circular(10.0)),
                       ),
                       hintText: "账号"),
                 ),
                 TextFormField(
-                  style: TextStyle(fontSize: 20),
                   controller: email,
                   decoration: InputDecoration(
                       filled: true,
@@ -79,7 +72,9 @@ class _FindPasswordState extends State<FindPassword> {
                       suffixIcon: Icon(Icons.email),
                       contentPadding: EdgeInsets.all(10),
                       border: OutlineInputBorder(
-                        borderRadius: const BorderRadius.only(bottomLeft: Radius.circular(10.0), bottomRight: Radius.circular(10.0)),
+                        borderRadius: const BorderRadius.only(
+                            bottomLeft: Radius.circular(10.0),
+                            bottomRight: Radius.circular(10.0)),
                       ),
                       hintText: "邮箱"),
                 ),
@@ -103,7 +98,8 @@ class _FindPasswordState extends State<FindPassword> {
                                       content: Text("发送验证码成功"),
                                       actions: <Widget>[
                                         TextButton(
-                                          onPressed: () => Navigator.pop(context, 'OK'),
+                                          onPressed: () =>
+                                              Navigator.pop(context, 'OK'),
                                           child: const Text('返回'),
                                         ),
                                       ],
@@ -116,18 +112,18 @@ class _FindPasswordState extends State<FindPassword> {
                                       content: Text(e.toString()),
                                       actions: <Widget>[
                                         TextButton(
-                                          onPressed: () => Navigator.pop(context, 'OK'),
+                                          onPressed: () =>
+                                              Navigator.pop(context, 'OK'),
                                           child: const Text('返回'),
                                         ),
                                       ],
                                     ));
                           });
                         },
-                        child: Text("发送验证码", style: TextStyle(fontSize: 20))),
+                        child: Text("发送验证码")),
                   ),
                 ),
                 TextFormField(
-                  style: TextStyle(fontSize: 20),
                   controller: code,
                   decoration: InputDecoration(
                       filled: true,
@@ -136,13 +132,14 @@ class _FindPasswordState extends State<FindPassword> {
                       suffixIcon: Icon(Icons.lock_clock),
                       contentPadding: EdgeInsets.all(10),
                       border: OutlineInputBorder(
-                        borderRadius: const BorderRadius.only(topLeft: Radius.circular(10.0), topRight: Radius.circular(10.0)),
+                        borderRadius: const BorderRadius.only(
+                            topLeft: Radius.circular(10.0),
+                            topRight: Radius.circular(10.0)),
                       ),
                       hintText: "验证码"),
                 ),
                 TextFormField(
                   controller: password,
-                  style: TextStyle(fontSize: 20),
                   decoration: InputDecoration(
                       filled: true,
                       fillColor: Colors.white,
@@ -150,7 +147,9 @@ class _FindPasswordState extends State<FindPassword> {
                       suffixIcon: Icon(Icons.remove_red_eye),
                       contentPadding: EdgeInsets.all(10),
                       border: OutlineInputBorder(
-                        borderRadius: const BorderRadius.only(bottomLeft: Radius.circular(10.0), bottomRight: Radius.circular(10.0)),
+                        borderRadius: const BorderRadius.only(
+                            bottomLeft: Radius.circular(10.0),
+                            bottomRight: Radius.circular(10.0)),
                       ),
                       hintText: "新密码"),
                 ),
@@ -174,7 +173,10 @@ class _FindPasswordState extends State<FindPassword> {
                                       content: Text("重置密码成功"),
                                       actions: <Widget>[
                                         TextButton(
-                                          onPressed: () => {Navigator.popAndPushNamed(context, "/auth/login")},
+                                          onPressed: () => {
+                                            Navigator.popAndPushNamed(
+                                                context, "/auth/login")
+                                          },
                                           child: const Text('去登陆'),
                                         ),
                                       ],
@@ -187,14 +189,15 @@ class _FindPasswordState extends State<FindPassword> {
                                       content: Text(e.toString()),
                                       actions: <Widget>[
                                         TextButton(
-                                          onPressed: () => Navigator.pop(context, 'OK'),
+                                          onPressed: () =>
+                                              Navigator.pop(context, 'OK'),
                                           child: const Text('返回'),
                                         ),
                                       ],
                                     ));
                           });
                         },
-                        child: Text("确认", style: TextStyle(fontSize: 20))),
+                        child: Text("确认")),
                   ),
                 ),
               ],
