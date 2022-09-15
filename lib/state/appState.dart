@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:dino/page/auth/loginForm.dart';
-import 'package:dino/page/auth/resetpassword.dart';
+import 'package:dino/page/auth/resetpasswordForm.dart';
 import 'package:dino/page/auth/signupForm.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -100,7 +100,7 @@ class AppState {
     }
   }
 
-  Future<bool> sendCode(ResetPasswordform payload) async {
+  Future<bool> sendCode(ResetPasswordForm payload) async {
     var res = await Api.post("auth/sendcode", body: payload);
     if (res["code"] == 0) {
       return Future.value(true);
@@ -128,7 +128,7 @@ class AppState {
     };
   }
 
-  resetPassword(ResetPasswordform payload) async {
+  resetPassword(ResetPasswordForm payload) async {
     var res = await Api.post("auth/resetpassword", body: payload);
     if (res["code"] == 0) {
       return Future.value(true);

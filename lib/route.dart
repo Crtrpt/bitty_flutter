@@ -1,6 +1,7 @@
 import 'package:dino/page/account/group.dart';
 import 'package:dino/page/account/setting.dart';
 import 'package:dino/page/auth/privacypolicy.dart';
+import 'package:dino/page/auth/resetpassword.dart';
 import 'package:dino/page/contact/contact.dart';
 import 'package:dino/page/contact/profile.dart';
 import 'package:dino/page/contact/search.dart';
@@ -8,9 +9,7 @@ import 'package:dino/page/group/create.dart';
 import 'package:dino/page/home.dart';
 import 'package:dino/page/session/session.dart';
 import 'package:flutter/material.dart';
-import './page/auth/findpassword.dart';
 import './page/auth/login.dart';
-import './page/auth/reset.dart';
 import './page/auth/signup.dart';
 import 'page/account/contact.dart';
 import 'page/auth/license.dart';
@@ -32,10 +31,8 @@ Map<String, Widget Function(BuildContext)> route = {
   '/license': (context) => License(),
   //隐私条款
   '/privacy_policy': (context) => PrivacyPolicy(),
-  //重置
-  '/auth/reset': (context) => Reset(),
   //找回密码
-  '/auth/findpassword': (context) => FindPassword(),
+  '/auth/findpassword': (context) => ResetPassword(),
   //用户列表
   '/account/setting': (context) => AccountSetting(),
   //群组设置

@@ -211,6 +211,12 @@ class _Login extends State<Login> {
                           onPressed: () =>
                               {Navigator.pushNamed(context, "/auth/signup")},
                           child: Text("去注册")),
+                      OutlinedButton(
+                          onPressed: () => {
+                                Navigator.pushNamed(
+                                    context, "/auth/findpassword")
+                              },
+                          child: Text("找回密码")),
                     ],
                   ),
                 ],
