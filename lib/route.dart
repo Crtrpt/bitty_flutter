@@ -1,13 +1,12 @@
 import 'package:dino/page/account/group.dart';
-import 'package:dino/page/account/profile.dart';
 import 'package:dino/page/account/setting.dart';
+import 'package:dino/page/auth/privacypolicy.dart';
 import 'package:dino/page/contact/contact.dart';
 import 'package:dino/page/contact/profile.dart';
 import 'package:dino/page/contact/search.dart';
 import 'package:dino/page/group/create.dart';
 import 'package:dino/page/home.dart';
 import 'package:dino/page/session/session.dart';
-import 'package:dino/page/user/userSetting.dart';
 import 'package:flutter/material.dart';
 import './page/auth/findpassword.dart';
 import './page/auth/login.dart';
@@ -31,6 +30,8 @@ Map<String, Widget Function(BuildContext)> route = {
   '/auth/signup': (context) => Signup(),
   //授权许可
   '/license': (context) => License(),
+  //隐私条款
+  '/privacy_policy': (context) => PrivacyPolicy(),
   //重置
   '/auth/reset': (context) => Reset(),
   //找回密码

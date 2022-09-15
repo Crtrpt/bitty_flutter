@@ -1,20 +1,20 @@
 import 'package:dino/page/user/_avatar.dart';
 import 'package:flutter/material.dart';
 
-import 'msg/_msg_render.dart';
+import '../render/_msg_render.dart';
 
 class Msg extends StatefulWidget {
   Map msgList = {};
   Msg(this.msgList);
 
   @override
-  State<StatefulWidget> createState() => _msgState(msgList);
+  State<StatefulWidget> createState() => _MsgState(msgList);
 }
 
-class _msgState extends State<Msg> {
+class _MsgState extends State<Msg> {
   Map msgList = {};
 
-  _msgState(this.msgList);
+  _MsgState(this.msgList);
 
   @override
   Widget build(BuildContext context) {
