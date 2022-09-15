@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 
 class GroupSearch extends StatefulWidget {
   @override
-  State<StatefulWidget> createState() => _group_search_state();
+  State<StatefulWidget> createState() => GroupSearchState();
 }
 
-class _group_search_state extends State<GroupSearch> {
+class GroupSearchState extends State<GroupSearch> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

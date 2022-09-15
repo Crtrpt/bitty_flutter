@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 // import 'package:flutter_markdown/flutter_markdown.dart';
 
 class MsgText extends StatelessWidget {
-  var msg;
+  final msg;
   MsgText(this.msg);
 
   @override

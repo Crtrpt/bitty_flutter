@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../session/_session_avatar.dart';
 
+@immutable
 class ContactItem extends StatelessWidget {
   var session;
 

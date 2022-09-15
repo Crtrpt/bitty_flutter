@@ -1,20 +1,16 @@
-import 'package:dino/data/sessionList.dart';
-import 'package:dino/page/contact/item.dart';
-import 'package:dino/utils/listBehavior.dart';
 import 'package:flutter/material.dart';
 
 class Message extends StatefulWidget {
   @override
-  State<StatefulWidget> createState() => _messageState();
+  State<StatefulWidget> createState() => MessageState();
 }
 
-class _messageState extends State<Message> {
+class MessageState extends State<Message> {
   var sessionList = [];
 
   @override
   void initState() {
     super.initState();
-    this.sessionList = getSessionList();
   }
 
   @override

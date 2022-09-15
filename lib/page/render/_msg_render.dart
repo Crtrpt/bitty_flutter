@@ -1,10 +1,10 @@
-import 'package:dino/page/user/msg/_msg_text.dart';
+import 'package:dino/page/render/_msg_text.dart';
 import 'package:flutter/material.dart';
 
-import '_msg_image.dart';
+import './_msg_image.dart';
 
 class MsgRender extends StatefulWidget {
-  var msgList;
+  final msgList;
   MsgRender(Map<dynamic, dynamic> this.msgList);
 
   @override

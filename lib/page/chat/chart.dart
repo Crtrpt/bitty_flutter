@@ -1,4 +1,3 @@
-import 'package:dino/data/messageList.dart';
 import 'package:dino/utils/listBehavior.dart';
 import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
@@ -20,7 +19,7 @@ class ChatState extends State<Chat> {
   @override
   void initState() {
     super.initState();
-    msgList = getMsgList();
+    msgList = [];
   }
 
   @override

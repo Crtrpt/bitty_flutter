@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 
 class MessageDetail extends StatefulWidget {
   @override
-  State<StatefulWidget> createState() => _message_detail_state();
+  State<StatefulWidget> createState() => MessageDetailState();
 }
 
-class _message_detail_state extends State<MessageDetail> {
+class MessageDetailState extends State<MessageDetail> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

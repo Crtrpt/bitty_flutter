@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 
 class AccountContact extends StatefulWidget {
   @override
-  State<StatefulWidget> createState() => _account_contact_state();
+  State<StatefulWidget> createState() => AccountContactState();
 }
 
-class _account_contact_state extends State<AccountContact> {
+class AccountContactState extends State<AccountContact> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

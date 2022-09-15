@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 
 class GroupProfile extends StatefulWidget {
   @override
-  State<StatefulWidget> createState() => _group_profile_state();
+  State<StatefulWidget> createState() => GroupPofileState();
 }
 
-class _group_profile_state extends State<GroupProfile> {
+class GroupPofileState extends State<GroupProfile> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

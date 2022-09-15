@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 
 class ContactSearch extends StatefulWidget {
   @override
-  State<StatefulWidget> createState() => _contact_search_state();
+  State<StatefulWidget> createState() => _ContactSearchState();
 }
 
-class _contact_search_state extends State<ContactSearch> {
+class _ContactSearchState extends State<ContactSearch> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

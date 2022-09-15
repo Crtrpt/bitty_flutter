@@ -1,6 +1,5 @@
 import 'dart:collection';
 
-import 'package:dino/data/sessionList.dart';
 import 'package:dino/main.dart';
 import 'package:flutter/material.dart';
 

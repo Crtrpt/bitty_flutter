@@ -1,17 +1,13 @@
-import 'package:dino/data/sessionList.dart';
 import 'package:dino/main.dart';
-import 'package:dino/page/contact/item.dart';
 import 'package:dino/utils/listBehavior.dart';
 import 'package:flutter/material.dart';
 
-import '../session/_sessionCard.dart';
-
 class Contact extends StatefulWidget {
   @override
-  State<StatefulWidget> createState() => _sessionState();
+  State<StatefulWidget> createState() => SessionState();
 }
 
-class _sessionState extends State<Contact> {
+class SessionState extends State<Contact> {
   Map<dynamic, dynamic>? sessionList;
 
   @override

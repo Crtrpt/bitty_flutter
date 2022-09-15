@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 
 class AccountProfile extends StatefulWidget {
   @override
-  State<StatefulWidget> createState() => _account_profile_state();
+  State<StatefulWidget> createState() => AccountProfileState();
 }
 
-class _account_profile_state extends State<AccountProfile> {
+class AccountProfileState extends State<AccountProfile> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

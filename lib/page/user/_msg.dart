@@ -1,5 +1,4 @@
 import 'package:dino/page/user/_avatar.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'msg/_msg_render.dart';
@@ -30,7 +29,8 @@ class _msgState extends State<Msg> {
           //消息体
           Expanded(
               child: Column(
-            textDirection: msgList["is_me"] ? TextDirection.rtl : TextDirection.ltr,
+            textDirection:
+                msgList["is_me"] ? TextDirection.rtl : TextDirection.ltr,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               //发送用户
@@ -54,7 +54,8 @@ class _msgState extends State<Msg> {
                       spreadRadius: 0.5,
                     ), //BoxShadow
                   ],
-                  color: msgList["is_me"] ? Colors.lightGreenAccent : Colors.white,
+                  color:
+                      msgList["is_me"] ? Colors.lightGreenAccent : Colors.white,
                   borderRadius: new BorderRadius.all(Radius.circular(4)),
                 ),
                 child: MsgRender(msgList),

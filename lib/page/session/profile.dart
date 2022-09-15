@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 
 class SessionProfile extends StatefulWidget {
   @override
-  State<StatefulWidget> createState() => _session_profile_state();
+  State<StatefulWidget> createState() => SessionProfileState();
 }
 
-class _session_profile_state extends State<SessionProfile> {
+class SessionProfileState extends State<SessionProfile> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
