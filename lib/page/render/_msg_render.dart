@@ -1,4 +1,4 @@
-import 'package:dino/page/render/_msg_text.dart';
+import 'package:bitty/page/render/_msg_text.dart';
 import 'package:flutter/material.dart';
 
 import './_msg_image.dart';

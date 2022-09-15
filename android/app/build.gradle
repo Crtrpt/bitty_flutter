@@ -33,7 +33,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.dino"
+        applicationId "com.bitty"
         minSdkVersion 21
         targetSdkVersion 31
         versionCode flutterVersionCode.toInteger()

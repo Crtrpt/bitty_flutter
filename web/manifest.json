@@ -1,11 +1,11 @@
 {
-    "name": "dino",
-    "short_name": "dino",
+    "name": "bitty",
+    "short_name": "bitty",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
     "theme_color": "#0175C2",
-    "description": "dino",
+    "description": "bitty",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [

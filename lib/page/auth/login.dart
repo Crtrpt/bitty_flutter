@@ -1,7 +1,9 @@
-import 'package:dino/page/auth/loginForm.dart';
+import 'package:bitty/page/auth/loginForm.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../main.dart';
+import '../../state/app_cubit.dart';
 
 class Login extends StatefulWidget {
   @override
@@ -181,6 +183,11 @@ class _Login extends State<Login> {
                               return;
                             }
                             state.Login(form).then((value) {
+                              print("登录成功");
+                              BlocProvider.of<SessionCubit>(context,
+                                      listen: false)
+                                  .init();
+
                               Navigator.pushNamed(context, "/home");
                             }).catchError((e) {
                               showDialog<String>(
@@ -188,6 +195,7 @@ class _Login extends State<Login> {
                                   builder: (BuildContext context) =>
                                       AlertDialog(
                                         title: const Text('提示'),
+                                        backgroundColor: Colors.red,
                                         content: Text(e.toString()),
                                         actions: <Widget>[
                                           TextButton(

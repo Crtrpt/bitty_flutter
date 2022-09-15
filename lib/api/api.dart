@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'dart:io';
 
-import 'package:dino/config.dart';
+import 'package:bitty/config.dart';
 import 'package:http/http.dart' as http;
 
 class Api {

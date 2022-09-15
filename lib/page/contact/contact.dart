@@ -1,5 +1,4 @@
-import 'package:dino/main.dart';
-import 'package:dino/utils/listBehavior.dart';
+import 'package:bitty/utils/listBehavior.dart';
 import 'package:flutter/material.dart';
 
 class Contact extends StatefulWidget {
@@ -8,14 +7,9 @@ class Contact extends StatefulWidget {
 }
 
 class SessionState extends State<Contact> {
-  Map<dynamic, dynamic>? sessionList;
-
   @override
   void initState() {
     super.initState();
-    this.sessionList = state.sessionList;
-    print("============");
-    print(this.sessionList?.length);
   }
 
   @override
@@ -54,7 +48,7 @@ class SessionState extends State<Contact> {
               itemBuilder: (context, idx) {
                 return Text(idx.toString());
               },
-              itemCount: sessionList?.length,
+              itemCount: 0,
             ),
           ),
         )

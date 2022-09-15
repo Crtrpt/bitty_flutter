@@ -1,6 +1,6 @@
 // ignore_for_file: non_constant_identifier_names
 
-import 'package:dino/page/message/message.dart';
+import 'package:bitty/page/message/message.dart';
 
 class SessionMember {
   const SessionMember(
@@ -25,7 +25,7 @@ class SessionMember {
   final int? suspend;
   final int? attention;
   final int? type;
-  final DateTime? created_at;
+  final String? created_at;
   factory SessionMember.fromJson(Map<String, dynamic> json) => SessionMember(
         user_id: json['user_id'] as String,
         session_id: json['session_id'] as String,
@@ -37,7 +37,7 @@ class SessionMember {
         suspend: json['suspend'] as int,
         attention: json['attention'] as int,
         type: json['type'] as int,
-        created_at: json['created_at'] as DateTime,
+        created_at: json['created_at'] as String,
       );
 }
 
@@ -57,9 +57,12 @@ class Session {
   final String? description;
   final int? type;
   final int? member_count;
-  final DateTime? created_at;
+  final String? created_at;
   factory Session.fromJson(Map<String, dynamic> json) => Session(
         name: json['name'] as String,
+        description: json['description'] as String,
+        avatar: json['avatar'] as String,
+        session_id: json['session_id'] as String,
       );
 }
 

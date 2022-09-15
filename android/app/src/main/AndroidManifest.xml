@@ -1,11 +1,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.dino">
+    package="com.bitty">
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
    <application
         android:name="${applicationName}"
-        android:label="dino"
+        android:label="bitty"
         android:icon="@mipmap/ic_launcher">
 
         <activity

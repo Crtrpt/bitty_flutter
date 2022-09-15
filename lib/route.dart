@@ -1,19 +1,20 @@
-import 'package:dino/page/account/group.dart';
-import 'package:dino/page/account/setting.dart';
-import 'package:dino/page/auth/privacypolicy.dart';
-import 'package:dino/page/auth/resetpassword.dart';
-import 'package:dino/page/contact/contact.dart';
-import 'package:dino/page/contact/profile.dart';
-import 'package:dino/page/contact/search.dart';
-import 'package:dino/page/group/create.dart';
-import 'package:dino/page/home.dart';
-import 'package:dino/page/session/session.dart';
+import 'package:bitty/page/account/group.dart';
+import 'package:bitty/page/account/setting.dart';
+import 'package:bitty/page/auth/privacypolicy.dart';
+import 'package:bitty/page/auth/resetpassword.dart';
+import 'package:bitty/page/contact/contact.dart';
+import 'package:bitty/page/contact/profile.dart';
+import 'package:bitty/page/contact/search.dart';
+import 'package:bitty/page/group/create.dart';
+import 'package:bitty/page/home.dart';
+import 'package:bitty/page/session/session.dart';
 import 'package:flutter/material.dart';
 import './page/auth/login.dart';
 import './page/auth/signup.dart';
 import 'page/account/contact.dart';
+import 'page/account/virtualAccount.dart';
 import 'page/auth/license.dart';
-import 'page/chat/chart.dart';
+import 'page/chat/chat.dart';
 import 'page/group/group.dart';
 import 'page/group/profile.dart';
 import 'page/group/search.dart';
@@ -22,7 +23,8 @@ import 'page/message/message.dart';
 import 'page/session/profile.dart';
 
 Map<String, Widget Function(BuildContext)> route = {
-  '/home': (context) => MyHomePage(),
+  //首页
+  '/home': (context) => MainPage(),
   //登录
   '/auth/login': (context) => Login(),
   //注册
@@ -39,20 +41,30 @@ Map<String, Widget Function(BuildContext)> route = {
   '/account/group': (context) => AccountGroup(),
   //联系人设置
   '/account/contact': (context) => AccountContact(),
-
+  //虚拟账户
+  "/account/virtual_account": (context) => VirtualAccount(),
+  //我的消息列表
   '/message': (context) => Message(),
+  //消息详情
   '/message/detail': (context) => MessageDetail(),
-
+  //session列表
   '/session': (context) => Session(),
-  '/session/chat': (context) => Chat(),
+  //session信息
   '/session/profile': (context) => SessionProfile(),
-
+  //chat界面
+  '/session/chat': (context) => Chat(),
+  //联系人列表
   '/contact': (context) => Contact(),
+  //联系人信息
   '/contact/profile': (context) => ContactProfile(),
+  //联系人搜索
   '/contact/search': (context) => ContactSearch(),
-
+  //群组列表
   '/group': (context) => Group(),
+  //创建群组
   '/group/create': (context) => GroupCreate(),
+  //群组详情
   '/group/profile': (context) => GroupProfile(),
+  //群组搜索
   '/group/search': (context) => GroupSearch(),
 };

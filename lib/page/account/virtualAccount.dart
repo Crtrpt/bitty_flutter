@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-class SessionProfile extends StatefulWidget {
+class VirtualAccount extends StatefulWidget {
   @override
-  State<StatefulWidget> createState() => SessionProfileState();
+  State<StatefulWidget> createState() => VirtualAccountState();
 }
 
-class SessionProfileState extends State<SessionProfile> {
+class VirtualAccountState extends State<VirtualAccount> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -16,14 +16,14 @@ class SessionProfileState extends State<SessionProfile> {
         centerTitle: true,
         elevation: 0.5,
         title: Text(
-          "会话信息",
+          "虚拟账户",
           style: TextStyle(
             fontSize: 18,
             color: Colors.grey,
           ),
         ),
       ),
-      body: Text("当前会话信息"),
+      body: Text("创建虚拟账户"),
     );
   }
 }

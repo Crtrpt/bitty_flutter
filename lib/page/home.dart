@@ -1,16 +1,17 @@
-import 'package:dino/main.dart';
+import 'package:bitty/main.dart';
 import 'package:flutter/material.dart';
 
+import '../component/Avatar.dart';
 import 'group/group.dart';
 import 'contact/contact.dart';
 import 'session/session.dart';
 
-class MyHomePage extends StatefulWidget {
+class MainPage extends StatefulWidget {
   @override
-  _MyHomePageState createState() => _MyHomePageState();
+  MainPageState createState() => MainPageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
+class MainPageState extends State<MainPage> with TickerProviderStateMixin {
   var idx = 0;
 
   late TabController _controller =
@@ -40,34 +41,30 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
           padding: EdgeInsets.zero,
           children: [
             const DrawerHeader(
-              child: Text('Drawer Header'),
+              child: Avatar(userId: "111", size: 40),
             ),
             ListTile(
-              title: const Text('设置'),
+              title: Text('设置'),
               onTap: () {
-                // Update the state of the app.
-                // ...
+                Navigator.pushNamed(context, "/account/profile");
               },
             ),
             ListTile(
-              title: const Text('群组设置'),
+              title: Text('群组设置'),
               onTap: () {
-                // Update the state of the app.
-                // ...
+                Navigator.pushNamed(context, "/account/group");
               },
             ),
             ListTile(
-              title: const Text('联系人设置'),
+              title: Text('联系人设置'),
               onTap: () {
-                // Update the state of the app.
-                // ...
+                Navigator.pushNamed(context, "/account/contact");
               },
             ),
             ListTile(
-              title: const Text("虚拟账户"),
+              title: Text("虚拟账户"),
               onTap: () {
-                // Update the state of the app.
-                // ...
+                Navigator.pushNamed(context, "/account/virtual_account");
               },
             ),
             ListTile(

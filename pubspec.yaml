@@ -1,5 +1,5 @@
-name: dino
-description: Dino just a im
+name: bitty
+description: Bitty just a im
 
 publish_to: 'none'
 
@@ -14,7 +14,6 @@ dependencies:
     sdk: flutter
   flutter_localizations:
     sdk: flutter
-  provider: ^4.3.2+2 
   cupertino_icons: ^1.0.2
   mqtt_client: ^9.6.6
   faker: ^2.0.0 #假数据
@@ -24,6 +23,7 @@ dependencies:
   font_awesome_flutter: ^10.1.0
   shared_preferences: ^2.0.15
   http: ^0.13.4
+  flutter_bloc: ^8.1.1
 
 
 

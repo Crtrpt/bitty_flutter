@@ -1,4 +1,4 @@
-import 'package:dino/page/auth/signupForm.dart';
+import 'package:bitty/page/auth/signupForm.dart';
 import 'package:flutter/material.dart';
 
 import '../../main.dart';

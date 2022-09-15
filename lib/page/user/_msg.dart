@@ -1,6 +1,6 @@
-import 'package:dino/page/user/_avatar.dart';
 import 'package:flutter/material.dart';
 
+import '../../component/Avatar.dart';
 import '../render/_msg_render.dart';
 
 class Msg extends StatefulWidget {
@@ -25,7 +25,9 @@ class _MsgState extends State<Msg> {
         textDirection: msgList["is_me"] ? TextDirection.rtl : TextDirection.ltr,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Avatar(msgList['f_id']),
+          Avatar(
+            userId: "2222",
+          ),
           //消息体
           Expanded(
               child: Column(

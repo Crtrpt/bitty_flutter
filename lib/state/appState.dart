@@ -1,8 +1,8 @@
 import 'dart:convert';
 
-import 'package:dino/page/auth/loginForm.dart';
-import 'package:dino/page/auth/resetpasswordForm.dart';
-import 'package:dino/page/auth/signupForm.dart';
+import 'package:bitty/page/auth/loginForm.dart';
+import 'package:bitty/page/auth/resetpasswordForm.dart';
+import 'package:bitty/page/auth/signupForm.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -12,9 +12,6 @@ class AppState {
   dynamic userInfo = null;
   bool IsLogin = false;
 
-  dynamic sessionList = null;
-  dynamic groupList = null;
-  dynamic contactList = null;
   String token = "";
   String version = "v0.0.1";
   SharedPreferences? prefs;
@@ -33,31 +30,23 @@ class AppState {
   }
 
   wakeup() {
-    this.getSessionList();
     // this.getContactList();
     // this.getGroupList();
   }
 
-  getSessionList() {
-    print("获取session列表");
-    Api.get("session/list").then((res) => {
-          if (res['code'] == 0) {this.sessionList = res['data']}
-        });
-  }
+  // getContactList() {
+  //   print("获取contact列表");
+  //   Api.get("contact/list").then((res) => {
+  //         if (res['code'] == 0) {this.contactList = res['data']}
+  //       });
+  // }
 
-  getContactList() {
-    print("获取contact列表");
-    Api.get("contact/list").then((res) => {
-          if (res['code'] == 0) {this.contactList = res['data']}
-        });
-  }
-
-  getGroupList() {
-    print("获取群组列表");
-    Api.get("group/list").then((res) => {
-          if (res['code'] == 0) {this.contactList = res['data']}
-        });
-  }
+  // getGroupList() {
+  //   print("获取群组列表");
+  //   Api.get("group/list").then((res) => {
+  //         if (res['code'] == 0) {this.contactList = res['data']}
+  //       });
+  // }
 
   save() {
     var content = jsonEncode(this);
@@ -69,9 +58,6 @@ class AppState {
 
   logout() {
     this.IsLogin = false;
-    this.sessionList = null;
-    this.groupList = null;
-    this.contactList = null;
     print("退出登录");
   }
 

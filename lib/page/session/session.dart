@@ -1,67 +1,50 @@
-import 'dart:collection';
-
-import 'package:dino/main.dart';
+import 'package:bitty/page/session/item.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../state/app_cubit.dart';
 
 class Session extends StatefulWidget {
   @override
-  State<StatefulWidget> createState() => _sessionState();
+  State<StatefulWidget> createState() => _SessionState();
 }
 
-class _sessionState extends State<Session> {
-  List<dynamic> sessionList = [];
-
+class _SessionState extends State<Session> {
   @override
   void initState() {
     super.initState();
-    state.getSessionList();
-    print("======================\n");
-    (state.sessionList as Map).forEach((v, k) {
-      print(v);
-      this.sessionList.add(HashMap.from(k));
-    });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        leading: null,
-        toolbarHeight: 50,
-        backgroundColor: Colors.white,
-        centerTitle: true,
-        elevation: 0.5,
-        title: Text(
-          "会话",
-          style: TextStyle(
-            fontSize: 18,
-            color: Colors.grey,
+        appBar: AppBar(
+          leading: IconButton(
+              icon: Icon(Icons.person),
+              color: Colors.grey,
+              onPressed: () {
+                Navigator.pushNamed(context, "/user/profile");
+              }),
+          toolbarHeight: 50,
+          backgroundColor: Colors.white,
+          centerTitle: true,
+          elevation: 0.5,
+          title: Text(
+            "会话",
+            style: TextStyle(
+              fontSize: 18,
+              color: Colors.grey.shade800,
+            ),
           ),
+          actions: [],
         ),
-        actions: [
-          //搜索
-          IconButton(
-              icon: Icon(Icons.search),
-              color: Colors.grey,
-              onPressed: () {
-                Navigator.pushNamed(context, "/group/search");
-              }),
-          IconButton(
-              icon: Icon(Icons.add),
-              color: Colors.grey,
-              onPressed: () {
-                Navigator.pushNamed(context, "/group/create");
-              }),
-        ],
-      ),
-      body: Container(
-        child: ListView.builder(
-          itemCount: sessionList.length,
-          itemBuilder: (context, idx) {
-            return Text(sessionList[0].session.name);
-          },
-        ),
-      ),
-    );
+        body: Container(
+          color: Colors.white,
+          child: BlocBuilder<SessionCubit, SessionState>(
+              builder: (context, sessionState) => Column(
+                    children: sessionState.sessionList
+                        .map((e) => SessionItem(e))
+                        .toList(),
+                  )),
+        ));
   }
 }
