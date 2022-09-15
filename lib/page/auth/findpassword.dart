@@ -82,13 +82,6 @@ class _FindPasswordState extends State<FindPassword> {
                   padding: EdgeInsets.symmetric(vertical: 2),
                   child: Center(
                     child: ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                          elevation: 0,
-                          fixedSize: const Size(
-                            500,
-                            45,
-                          ),
-                        ),
                         onPressed: () {
                           state.sendCode(form).then((value) {
                             showDialog<String>(
@@ -157,13 +150,6 @@ class _FindPasswordState extends State<FindPassword> {
                   padding: EdgeInsets.symmetric(vertical: 8),
                   child: Center(
                     child: ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                          elevation: 0,
-                          fixedSize: const Size(
-                            500,
-                            45,
-                          ),
-                        ),
                         onPressed: () {
                           state.resetPassword(form).then((value) {
                             showDialog<String>(
