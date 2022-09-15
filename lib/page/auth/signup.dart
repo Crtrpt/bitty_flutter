@@ -107,7 +107,7 @@ class _SignupState extends State<Signup> {
                       width: 10,
                       height: 10,
                       child: Checkbox(
-                          value: false,
+                          value: form.agree,
                           onChanged: (v) {
                             setState(() {
                               form.agree = v!;
@@ -118,7 +118,9 @@ class _SignupState extends State<Signup> {
                       padding: EdgeInsets.fromLTRB(10, 10, 0, 10),
                       child: GestureDetector(
                         onTap: () {
-                          Navigator.pushNamed(context, "/license");
+                          setState(() {
+                            form.agree = !form.agree;
+                          });
                         },
                         child: Text("我同意"),
                       ),
