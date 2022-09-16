@@ -1,19 +1,20 @@
-import 'package:bitty/page/model/session.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../state/session_store.dart';
+import '../../state/contact_store.dart';
+import '../../state/group_store.dart';
+import '../model/group.dart';
 
-class SessionItem extends StatelessWidget {
-  SessionItem(this.session);
-  final SessionList session;
+class GroupItem extends StatelessWidget {
+  GroupItem(this.group);
+  final GroupList group;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
         onTap: () => {
-              BlocProvider.of<SessionStore>(context, listen: false)
-                  .setCurSession(session.session!.session_id!),
-              Navigator.pushNamed(context, "/session/chat")
+              BlocProvider.of<GroupStore>(context, listen: false)
+                  .setCur(group.group!.group_id!),
+              Navigator.pushNamed(context, "/group/profile")
             },
         child: Padding(
             padding: EdgeInsets.fromLTRB(10, 10, 10, 5),
@@ -27,36 +28,27 @@ class SessionItem extends StatelessWidget {
                       width: 40,
                       height: 40,
                       child: Container(
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.all(
-                                Radius.circular(20),
-                              ),
-                              border: Border.all(
-                                  width: 1,
-                                  style: BorderStyle.solid,
-                                  color: Colors.grey.shade500)),
                           child: Center(
-                            child: (this.session.session?.avatar == "")
-                                ? Text(
-                                    (this.session.session?.name ?? '')[0],
-                                    style: TextStyle(
-                                        fontSize: 30,
-                                        color: Colors.grey.shade500),
-                                  )
-                                : null,
-                          )),
+                        child: (this.group.group?.avatar == "")
+                            ? Text(
+                                (this.group.group?.name ?? '')[0],
+                                style: TextStyle(
+                                    fontSize: 30, color: Colors.grey.shade500),
+                              )
+                            : Image.network(group.group?.avatar ?? ''),
+                      )),
                     ),
-                    Positioned(
-                        top: 0,
-                        right: 0,
-                        child: Container(
-                          width: 10,
-                          height: 10,
-                          decoration: new BoxDecoration(
-                            color: Colors.red.shade500,
-                            shape: BoxShape.circle,
-                          ),
-                        )),
+                    // Positioned(
+                    //     top: 0,
+                    //     right: 0,
+                    //     child: Container(
+                    //       width: 10,
+                    //       height: 10,
+                    //       decoration: new BoxDecoration(
+                    //         color: Colors.red.shade500,
+                    //         shape: BoxShape.circle,
+                    //       ),
+                    //     )),
                   ]),
                 ),
                 Flexible(
@@ -82,7 +74,7 @@ class SessionItem extends StatelessWidget {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
-                                    this.session.session?.name ?? "",
+                                    this.group.group?.name ?? "",
                                     style: TextStyle(
                                         fontSize: 16,
                                         color: Colors.grey.shade700),
@@ -90,7 +82,7 @@ class SessionItem extends StatelessWidget {
                                   Container(
                                     padding: EdgeInsets.only(bottom: 5),
                                     child: Text(
-                                      this.session.session?.description ?? "",
+                                      this.group.group?.description ?? "",
                                       style: TextStyle(
                                           fontSize: 12,
                                           color: Colors.grey.shade500),
@@ -101,7 +93,7 @@ class SessionItem extends StatelessWidget {
                           SizedBox(
                             child: Container(
                               child: Text(
-                                "刚刚",
+                                "${group.group?.member_count}/${group.group?.max_member_count}",
                                 style: TextStyle(
                                     fontSize: 12, color: Colors.grey.shade500),
                               ),

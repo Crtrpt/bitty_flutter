@@ -1,7 +1,7 @@
 import 'package:bitty/page/session/item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../state/sessionStore.dart';
+import '../../state/session_store.dart';
 
 class Session extends StatefulWidget {
   @override

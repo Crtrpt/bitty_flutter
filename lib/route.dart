@@ -6,6 +6,7 @@ import 'package:bitty/page/contact/contact.dart';
 import 'package:bitty/page/contact/profile.dart';
 import 'package:bitty/page/contact/search.dart';
 import 'package:bitty/page/group/create.dart';
+import 'package:bitty/page/group/group_member.dart';
 import 'package:bitty/page/home.dart';
 import 'package:bitty/page/session/session.dart';
 import 'package:flutter/material.dart';
@@ -61,6 +62,8 @@ Map<String, Widget Function(BuildContext)> route = {
   '/contact/search': (context) => ContactSearch(),
   //群组列表
   '/group': (context) => Group(),
+  //群成员列表
+  '/group/member': (context) => GroupMember(),
   //创建群组
   '/group/create': (context) => GroupCreate(),
   //群组详情

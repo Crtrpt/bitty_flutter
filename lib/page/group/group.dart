@@ -1,16 +1,25 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../state/group_store.dart';
+import 'item.dart';
 
 class Group extends StatefulWidget {
   @override
-  State<StatefulWidget> createState() => GroupState();
+  State<StatefulWidget> createState() => _GroupState();
 }
 
-class GroupState extends State<Group> {
+class _GroupState extends State<Group> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: null,
+        leading: IconButton(
+            icon: Icon(Icons.add),
+            color: Colors.grey,
+            onPressed: () {
+              Navigator.pushNamed(context, "/group/create");
+            }),
         toolbarHeight: 50,
         backgroundColor: Colors.white,
         centerTitle: true,
@@ -30,15 +39,15 @@ class GroupState extends State<Group> {
               onPressed: () {
                 Navigator.pushNamed(context, "/group/search");
               }),
-          IconButton(
-              icon: Icon(Icons.add),
-              color: Colors.grey,
-              onPressed: () {
-                Navigator.pushNamed(context, "/group/create");
-              }),
         ],
       ),
-      body: Text("群组"),
+      body: Container(
+        color: Colors.white,
+        child: BlocBuilder<GroupStore, GroupState>(
+            builder: (context, state) => Column(
+                  children: state.list.map((e) => GroupItem(e)).toList(),
+                )),
+      ),
     );
   }
 }

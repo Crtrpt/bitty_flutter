@@ -20,12 +20,20 @@ class SessionStore extends Bloc<BittyEvent, SessionState> {
       if (res['code'] == 0) {
         (res['data'] as Map<String, dynamic>).entries.forEach((element) {
           var res = SessionList.fronJson(element.value);
+          state.sessionList.clear();
+          state.sessionMap.clear();
           state.sessionMap.putIfAbsent(element.key, () => res);
           state.sessionList.add(res);
           MqttClient.subject("/session/" + element.key + "/chat");
         });
         emit(state);
       }
+    });
+    on<SendMsgEvent>((event, emit) {
+      print("发送消息");
+    });
+    on<ReceivedMsgEvent>((event, emit) {
+      print("接收到消息");
     });
   }
 

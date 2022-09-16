@@ -1,12 +1,13 @@
 import 'package:bitty/page/auth/loginForm.dart';
+import 'package:bitty/state/contact_store.dart';
 import 'package:bitty/state/event.dart';
+import 'package:bitty/state/group_store.dart';
 import 'package:bitty/state/userStore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../api/api.dart';
-import '../../main.dart';
-import '../../state/sessionStore.dart';
+import '../../state/session_store.dart';
 
 class Login extends StatefulWidget {
   @override
@@ -190,6 +191,10 @@ class _Login extends State<Login> {
                                 BlocProvider.of<UserStore>(context)
                                     .add(LoginEvent(res['data']));
                                 BlocProvider.of<SessionStore>(context)
+                                    .add(InitEvent());
+                                BlocProvider.of<GroupStore>(context)
+                                    .add(InitEvent());
+                                BlocProvider.of<ContactStore>(context)
                                     .add(InitEvent());
                               } else {
                                 throw Exception(res['msg']);

@@ -1,14 +1,17 @@
 import 'dart:convert';
 
+import 'package:flutter/widgets.dart';
 import 'package:mqtt_client/mqtt_client.dart';
 import 'package:mqtt_client/mqtt_server_client.dart';
 
 class MqttClient {
   static MqttServerClient? client =
       MqttServerClient.withPort('192.168.1.8', "", 9085);
+  static BuildContext? ctx;
 
-  static init() async {
-    client?.logging(on: true);
+  static init(BuildContext context) async {
+    // client?.logging(on: true);
+    ctx = context;
     client?.onConnected = onConnect;
     client?.onDisconnected = onDisconnect;
     client?.connect("", "");
@@ -31,6 +34,7 @@ class MqttClient {
 
   static subject(String topic) {
     print("订阅" + topic);
+    client?.subscribe(topic, MqttQos.atMostOnce);
   }
 
   static publish(String topic, dynamic payload) {

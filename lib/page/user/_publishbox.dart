@@ -1,3 +1,4 @@
+import 'package:bitty/api/mqtt.dart';
 import 'package:flutter/material.dart';
 
 class PublishBox extends StatefulWidget {
@@ -35,16 +36,19 @@ class _PublishBox extends State<PublishBox> {
                 ),
                 Expanded(
                     child: TextField(
-                  decoration: InputDecoration(enabledBorder: null, hintText: "发送消息"),
+                  decoration:
+                      InputDecoration(enabledBorder: null, hintText: "发送消息"),
                   maxLines: 1,
                 )),
                 Container(
                   child: IconButton(
                     icon: Icon(Icons.send),
                     color: Colors.grey,
-                    onPressed: () {},
+                    onPressed: () {
+                      MqttClient.publish("11111111", "222222222222");
+                    },
                   ),
-                )
+                ),
               ],
             ),
           )),
