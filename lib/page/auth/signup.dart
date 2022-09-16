@@ -1,3 +1,4 @@
+import 'package:bitty/api/api.dart';
 import 'package:bitty/page/auth/signupForm.dart';
 import 'package:flutter/material.dart';
 
@@ -166,7 +167,7 @@ class _SignupState extends State<Signup> {
                         ));
                         return;
                       }
-                      state.Signup(form).then((value) {
+                      Api.post("auth/signup", body: form).then((value) {
                         showDialog<String>(
                             context: context,
                             builder: (BuildContext context) => AlertDialog(

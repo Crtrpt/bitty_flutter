@@ -1,7 +1,9 @@
-import 'package:bitty/main.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../component/Avatar.dart';
+import '../state/event.dart';
+import '../state/userStore.dart';
 import 'group/group.dart';
 import 'contact/contact.dart';
 import 'session/session.dart';
@@ -70,8 +72,9 @@ class MainPageState extends State<MainPage> with TickerProviderStateMixin {
             ListTile(
               title: const Text("退出"),
               onTap: () {
-                Navigator.pushNamed(context, "/auth/login");
-                state.logout();
+                Navigator.pop(context);
+                BlocProvider.of<UserStore>(context, listen: false)
+                    .add(LogoutEvent());
               },
             ),
           ],

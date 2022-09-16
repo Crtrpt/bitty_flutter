@@ -4,6 +4,11 @@ class UserConfig {
   String? user_id;
 }
 
+class Token {
+  String? user_id;
+  String? token;
+}
+
 class User {
   String? account;
   String? nick_name;

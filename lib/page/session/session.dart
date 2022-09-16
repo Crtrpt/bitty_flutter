@@ -1,7 +1,7 @@
 import 'package:bitty/page/session/item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../state/app_cubit.dart';
+import '../../state/sessionStore.dart';
 
 class Session extends StatefulWidget {
   @override
@@ -16,6 +16,7 @@ class _SessionState extends State<Session> {
 
   @override
   Widget build(BuildContext context) {
+    print("init =======================");
     return Scaffold(
         appBar: AppBar(
           leading: IconButton(
@@ -39,7 +40,7 @@ class _SessionState extends State<Session> {
         ),
         body: Container(
           color: Colors.white,
-          child: BlocBuilder<SessionCubit, SessionState>(
+          child: BlocBuilder<SessionStore, SessionState>(
               builder: (context, sessionState) => Column(
                     children: sessionState.sessionList
                         .map((e) => SessionItem(e))

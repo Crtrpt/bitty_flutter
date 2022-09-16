@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../api/api.dart';
 import '../../main.dart';
 import 'resetpasswordForm.dart';
 
@@ -91,7 +92,7 @@ class _ResetPasswordState extends State<ResetPassword> {
                   children: [
                     ElevatedButton(
                         onPressed: () {
-                          state.sendCode(form).then((value) {
+                          Api.post("auth/sendcode", body: form).then((value) {
                             showDialog<String>(
                                 context: context,
                                 builder: (BuildContext context) => AlertDialog(
@@ -159,23 +160,26 @@ class _ResetPasswordState extends State<ResetPassword> {
                     children: [
                       ElevatedButton(
                           onPressed: () {
-                            state.resetPassword(form).then((value) {
-                              showDialog<String>(
-                                  context: context,
-                                  builder: (BuildContext context) =>
-                                      AlertDialog(
-                                        title: const Text('提示'),
-                                        content: Text("重置密码成功"),
-                                        actions: <Widget>[
-                                          TextButton(
-                                            onPressed: () => {
-                                              Navigator.popAndPushNamed(
-                                                  context, "/auth/login")
-                                            },
-                                            child: const Text('去登陆'),
-                                          ),
-                                        ],
-                                      ));
+                            Api.post("auth/resetpassword", body: form)
+                                .then((value) {
+                              if (value['code'] == 0) {
+                                showDialog<String>(
+                                    context: context,
+                                    builder: (BuildContext context) =>
+                                        AlertDialog(
+                                          title: const Text('提示'),
+                                          content: Text("重置密码成功"),
+                                          actions: <Widget>[
+                                            TextButton(
+                                              onPressed: () => {
+                                                Navigator.popAndPushNamed(
+                                                    context, "/auth/login")
+                                              },
+                                              child: const Text('去登陆'),
+                                            ),
+                                          ],
+                                        ));
+                              }
                             }).catchError((e) {
                               showDialog<String>(
                                   context: context,

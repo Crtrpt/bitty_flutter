@@ -2,7 +2,7 @@ import 'package:bitty/page/model/session.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../state/app_cubit.dart';
+import '../../state/sessionStore.dart';
 
 class SessionItem extends StatelessWidget {
   SessionItem(this.session);
@@ -11,7 +11,7 @@ class SessionItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
         onTap: () => {
-              BlocProvider.of<SessionCubit>(context, listen: false)
+              BlocProvider.of<SessionStore>(context, listen: false)
                   .setCurSession(session.session!.session_id!),
               Navigator.pushNamed(context, "/session/chat")
             },

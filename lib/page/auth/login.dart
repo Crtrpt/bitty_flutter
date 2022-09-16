@@ -1,9 +1,12 @@
 import 'package:bitty/page/auth/loginForm.dart';
+import 'package:bitty/state/event.dart';
+import 'package:bitty/state/userStore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../api/api.dart';
 import '../../main.dart';
-import '../../state/app_cubit.dart';
+import '../../state/sessionStore.dart';
 
 class Login extends StatefulWidget {
   @override
@@ -182,13 +185,15 @@ class _Login extends State<Login> {
                               ));
                               return;
                             }
-                            state.Login(form).then((value) {
-                              print("登录成功");
-                              BlocProvider.of<SessionCubit>(context,
-                                      listen: false)
-                                  .init();
-
-                              Navigator.pushNamed(context, "/home");
+                            Api.post("auth/login", body: form).then((res) {
+                              if (res['code'] == 0) {
+                                BlocProvider.of<UserStore>(context)
+                                    .add(LoginEvent(res['data']));
+                                BlocProvider.of<SessionStore>(context)
+                                    .add(InitEvent());
+                              } else {
+                                throw Exception(res['msg']);
+                              }
                             }).catchError((e) {
                               showDialog<String>(
                                   context: context,
