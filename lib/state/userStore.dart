@@ -8,22 +8,26 @@ import 'event.dart';
 
 class AuthState {
   bool isLogin = false;
-}
-
-class UserState extends AuthState {
   User? user;
   String? token = "";
   UserConfig? config;
   Token? curToken;
+  String? union_id;
+  int? union_type;
 }
+
+class UserState extends AuthState {}
 
 class UserStore extends Bloc<BittyEvent, AuthState> {
   UserStore() : super(AuthState()) {
     on<LoginEvent>((event, emit) {
+      print('=======================登录事件');
       var user = UserState();
       user.isLogin = true;
       user.token = event.payload['token'] as String;
       user.user = User.fromJson(event.payload['user']);
+      user.union_id = event.payload['union_id'];
+      user.union_type = event.payload['union_type'];
       Api.defaultHeader.putIfAbsent("token", () => user.token!);
       emit(user);
     });

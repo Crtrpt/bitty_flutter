@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../component/Avatar.dart';
 import '../state/event.dart';
 import '../state/userStore.dart';
+import 'drawer_avatar.dart';
 import 'group/group.dart';
 import 'contact/contact.dart';
 import 'session/session.dart';
@@ -37,52 +37,97 @@ class MainPageState extends State<MainPage> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
+    var scaffoldKey = GlobalKey<ScaffoldState>();
     return Scaffold(
+      key: scaffoldKey,
       drawer: Drawer(
-        child: ListView(
-          padding: EdgeInsets.zero,
-          children: [
-            const DrawerHeader(
-              child: Avatar(userId: "111", size: 40),
-            ),
-            ListTile(
-              title: Text('设置'),
-              onTap: () {
-                Navigator.pushNamed(context, "/account/profile");
-              },
-            ),
-            ListTile(
-              title: Text('群组设置'),
-              onTap: () {
-                Navigator.pushNamed(context, "/account/group");
-              },
-            ),
-            ListTile(
-              title: Text('联系人设置'),
-              onTap: () {
-                Navigator.pushNamed(context, "/account/contact");
-              },
-            ),
-            ListTile(
-              title: Text("虚拟账户"),
-              onTap: () {
-                Navigator.pushNamed(context, "/account/virtual_account");
-              },
-            ),
-            ListTile(
-              title: const Text("退出"),
-              onTap: () {
-                Navigator.pop(context);
-                BlocProvider.of<UserStore>(context, listen: false)
-                    .add(LogoutEvent());
-              },
-            ),
-          ],
-        ),
+        child: BlocBuilder<UserStore, AuthState>(builder: (context, state) {
+          return ListView(
+            padding: EdgeInsets.zero,
+            children: [
+              DrawerHeader(
+                child:
+                    Row(crossAxisAlignment: CrossAxisAlignment.end, children: [
+                  DrawerAvatar(
+                    state.user,
+                    size: 80,
+                  ),
+                  Flexible(
+                      fit: FlexFit.tight,
+                      child: Padding(
+                        padding: EdgeInsets.only(left: 20),
+                        child: Column(
+                            verticalDirection: VerticalDirection.up,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Padding(
+                                padding: EdgeInsets.only(top: 20),
+                                child: Text(
+                                  state.user?.status ?? '',
+                                  style: TextStyle(
+                                      fontSize: 12,
+                                      color: Colors.grey.shade500),
+                                ),
+                              ),
+                              Padding(
+                                padding: EdgeInsets.only(top: 20),
+                                child: Text(
+                                  state.user?.nick_name ?? '',
+                                  style: TextStyle(
+                                      fontSize: 30,
+                                      color: Colors.grey.shade500),
+                                ),
+                              )
+                            ]),
+                      )),
+                ]),
+              ),
+              ListTile(
+                title: Text('设置'),
+                onTap: () {
+                  Navigator.popAndPushNamed(context, "/account/profile");
+                },
+              ),
+              ListTile(
+                title: Text('群组设置'),
+                onTap: () {
+                  Navigator.popAndPushNamed(context, "/account/group");
+                },
+              ),
+              ListTile(
+                title: Text('联系人设置'),
+                onTap: () {
+                  Navigator.popAndPushNamed(context, "/account/contact");
+                },
+              ),
+              ListTile(
+                title: Text("虚拟账户"),
+                onTap: () {
+                  Navigator.popAndPushNamed(context, "/account/virtual_account",
+                      arguments: {"union_id": state.union_id});
+                },
+              ),
+              ListTile(
+                title: const Text("退出"),
+                onTap: () {
+                  Navigator.pop(context);
+                  BlocProvider.of<UserStore>(context, listen: false)
+                      .add(LogoutEvent());
+                },
+              ),
+            ],
+          );
+        }),
       ),
       body: TabBarView(
         controller: _controller,
-        children: [Session(), Contact(), Group()],
+        children: [
+          Session(
+            opendrawer: () => {scaffoldKey.currentState?.openDrawer()},
+          ),
+          Contact(),
+          Group()
+        ],
       ),
       bottomNavigationBar: BottomNavigationBar(
         onTap: (i) {

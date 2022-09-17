@@ -1,4 +1,5 @@
 import 'package:bitty/page/account/group.dart';
+import 'package:bitty/page/account/profile.dart';
 import 'package:bitty/page/account/setting.dart';
 import 'package:bitty/page/auth/privacypolicy.dart';
 import 'package:bitty/page/auth/resetpassword.dart';
@@ -13,7 +14,7 @@ import 'package:flutter/material.dart';
 import './page/auth/login.dart';
 import './page/auth/signup.dart';
 import 'page/account/contact.dart';
-import 'page/account/virtualAccount.dart';
+import 'page/account/virtual_account.dart';
 import 'page/auth/license.dart';
 import 'page/chat/chat.dart';
 import 'page/group/group.dart';
@@ -36,6 +37,8 @@ Map<String, Widget Function(BuildContext)> route = {
   '/privacy_policy': (context) => PrivacyPolicy(),
   //找回密码
   '/auth/findpassword': (context) => ResetPassword(),
+  //用户列表
+  '/account/profile': (context) => AccountProfile(),
   //用户列表
   '/account/setting': (context) => AccountSetting(),
   //群组设置

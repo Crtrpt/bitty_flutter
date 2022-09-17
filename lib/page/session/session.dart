@@ -4,11 +4,17 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../state/session_store.dart';
 
 class Session extends StatefulWidget {
+  Session({this.opendrawer});
+  Function? opendrawer;
   @override
-  State<StatefulWidget> createState() => _SessionState();
+  State<StatefulWidget> createState() =>
+      _SessionState(opendrawer: this.opendrawer);
 }
 
 class _SessionState extends State<Session> {
+  _SessionState({this.opendrawer});
+  Function? opendrawer;
+
   @override
   void initState() {
     super.initState();
@@ -20,10 +26,10 @@ class _SessionState extends State<Session> {
     return Scaffold(
         appBar: AppBar(
           leading: IconButton(
-              icon: Icon(Icons.person),
+              icon: Icon(Icons.notes),
               color: Colors.grey,
               onPressed: () {
-                Navigator.pushNamed(context, "/user/profile");
+                this.opendrawer!();
               }),
           toolbarHeight: 50,
           backgroundColor: Colors.white,
@@ -36,7 +42,14 @@ class _SessionState extends State<Session> {
               color: Colors.grey.shade800,
             ),
           ),
-          actions: [],
+          actions: [
+            IconButton(
+                icon: Icon(Icons.notifications),
+                color: Colors.grey,
+                onPressed: () {
+                  Navigator.pushNamed(context, "/message");
+                })
+          ],
         ),
         body: Container(
           color: Colors.white,

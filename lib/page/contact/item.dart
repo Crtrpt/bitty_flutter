@@ -26,17 +26,6 @@ class ContactItem extends StatelessWidget {
                   padding: EdgeInsets.only(left: 0, right: 10),
                   child: Stack(children: [
                     ContactAvatar(contact.user),
-                    // Positioned(
-                    //     top: 0,
-                    //     right: 0,
-                    //     child: Container(
-                    //       width: 10,
-                    //       height: 10,
-                    //       decoration: new BoxDecoration(
-                    //         color: Colors.red.shade500,
-                    //         shape: BoxShape.circle,
-                    //       ),
-                    //     )),
                   ]),
                 ),
                 Flexible(

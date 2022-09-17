@@ -37,10 +37,10 @@ class SessionStore extends Bloc<BittyEvent, SessionState> {
         msg.pre_id = lastMsg?.sender_id;
         msg.pre_sn = lastMsg?.sn;
       }
-      msg.session_id=state.curSession?.session?.session_id;
+      msg.session_id = state.curSession?.session?.session_id;
 
       print("组装消息");
-      MqttClient.publish("/session/", payload)
+      MqttClient.publish("/session/", msg);
     });
     on<ReceivedMsgEvent>((event, emit) {
       print("接收到消息");
