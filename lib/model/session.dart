@@ -1,6 +1,6 @@
 // ignore_for_file: non_constant_identifier_names
 
-import 'package:bitty/page/message/message.dart';
+import 'package:bitty/model/payload.dart';
 
 class SessionMember {
   const SessionMember(
@@ -25,6 +25,7 @@ class SessionMember {
   final int? suspend;
   final int? attention;
   final int? type;
+  final int sn = 0;
   final String? created_at;
   factory SessionMember.fromJson(Map<String, dynamic> json) => SessionMember(
         user_id: json['user_id'] as String,
@@ -72,7 +73,7 @@ class SessionList {
     this.setting,
     this.chatList,
   });
-  final List<Message>? chatList;
+  final List<Payload>? chatList;
   final SessionMember? setting;
   final Session? session;
   factory SessionList.fronJson(Map<String, dynamic> json) => SessionList(

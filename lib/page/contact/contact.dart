@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../state/contact_store.dart';
+import '../../state/event.dart';
 
 class Contact extends StatefulWidget {
   @override
@@ -18,10 +19,14 @@ class SessionState extends State<Contact> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-        child: Column(children: [
-      AppBar(
-        leading: null,
+    return Scaffold(
+      appBar: AppBar(
+        leading: IconButton(
+            icon: Icon(Icons.refresh),
+            color: Colors.grey,
+            onPressed: () {
+              BlocProvider.of<ContactStore>(context).add(InitEvent());
+            }),
         toolbarHeight: 50,
         backgroundColor: Colors.white,
         centerTitle: true,
@@ -34,7 +39,6 @@ class SessionState extends State<Contact> {
           ),
         ),
         actions: [
-          //搜索
           IconButton(
               icon: Icon(Icons.search),
               color: Colors.grey,
@@ -43,15 +47,10 @@ class SessionState extends State<Contact> {
               }),
         ],
       ),
-      Expanded(
-        child: ScrollConfiguration(
-          behavior: ListBehavior(),
-          child: BlocBuilder<ContactStore, ContactState>(
-              builder: (context, state) => Column(
-                    children: state.list.map((e) => ContactItem(e)).toList(),
-                  )),
-        ),
-      ),
-    ]));
+      body: BlocBuilder<ContactStore, ContactState>(
+          builder: (context, state) => Column(
+                children: state.list.map((e) => ContactItem(e)).toList(),
+              )),
+    );
   }
 }

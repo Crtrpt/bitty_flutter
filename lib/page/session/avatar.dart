@@ -1,9 +1,9 @@
-import 'package:bitty/model/group.dart';
+import 'package:bitty/model/session.dart';
 import 'package:flutter/material.dart';
 
-class GroupAvatar extends StatelessWidget {
-  GroupAvatar(this.group, {this.size: 40});
-  Group? group;
+class SessionAvatar extends StatelessWidget {
+  SessionAvatar(this.session, {this.size: 40});
+  Session? session;
   double size;
 
   @override
@@ -13,15 +13,15 @@ class GroupAvatar extends StatelessWidget {
       height: this.size,
       child: Container(
           child: Center(
-        child: (group?.avatar == "")
+        child: (this.session?.avatar == "")
             ? Text(
-                (group?.name ?? '')[0],
+                (this.session?.name ?? '')[0],
                 style: TextStyle(fontSize: 30, color: Colors.grey.shade500),
               )
             : ClipRRect(
                 borderRadius: BorderRadius.circular(this.size / 2),
                 child: Image.network(
-                  this.group?.avatar ?? '',
+                  this.session?.avatar ?? '',
                   width: size,
                   height: size,
                 )),

@@ -1,7 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../api/api.dart';
-import '../page/model/contact.dart';
+import '../model/contact.dart';
 import 'event.dart';
 
 class ContactState {
@@ -11,20 +11,34 @@ class ContactState {
   Map<String, ContactList> map = new Map();
 }
 
+class FetchContactState extends ContactState {}
+
 class ContactStore extends Bloc<BittyEvent, ContactState> {
   ContactStore() : super(ContactState()) {
+    on<RemoveSessionEvent>((event, emit) {
+      if (state.cur?.contact?.session_id == event.sessionId) {
+        state.cur = null;
+      }
+      state.map.removeWhere(
+          (key, value) => value.contact?.session_id == event.sessionId);
+      state.list.removeWhere(
+          (element) => element.contact?.session_id == event.sessionId);
+    });
     on<InitEvent>((event, emit) async {
+      emit(FetchContactState());
+      print("修改为fetch状态");
       var res = await Api.get("contact/list");
+      var newState = ContactState();
       if (res['code'] == 0) {
+        newState.count = 0;
         (res['data'] as Map<String, dynamic>).entries.forEach((element) {
           var res = ContactList.fronJson(element.value);
-          state.map.clear();
-          state.list.clear();
-          state.map.putIfAbsent(element.key, () => res);
-          state.list.add(res);
-          state.count++;
+          newState.map.putIfAbsent(element.key, () => res);
+          newState.list.add(res);
+          newState.count++;
         });
-        emit(state);
+        print("联系人初始化 init================" + newState.count.toString());
+        emit(newState);
       }
     });
   }

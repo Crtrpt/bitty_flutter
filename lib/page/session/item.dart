@@ -1,4 +1,5 @@
-import 'package:bitty/page/model/session.dart';
+import 'package:bitty/model/session.dart';
+import 'package:bitty/page/session/avatar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -23,29 +24,7 @@ class SessionItem extends StatelessWidget {
                 Container(
                   padding: EdgeInsets.only(left: 0, right: 10),
                   child: Stack(children: [
-                    SizedBox(
-                      width: 40,
-                      height: 40,
-                      child: Container(
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.all(
-                                Radius.circular(20),
-                              ),
-                              border: Border.all(
-                                  width: 1,
-                                  style: BorderStyle.solid,
-                                  color: Colors.grey.shade500)),
-                          child: Center(
-                            child: (this.session.session?.avatar == "")
-                                ? Text(
-                                    (this.session.session?.name ?? '')[0],
-                                    style: TextStyle(
-                                        fontSize: 30,
-                                        color: Colors.grey.shade500),
-                                  )
-                                : null,
-                          )),
-                    ),
+                    SessionAvatar(this.session.session),
                     Positioned(
                         top: 0,
                         right: 0,

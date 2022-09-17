@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../state/session_store.dart';
 import '../user/_msg.dart';
-import '../user/_publishbox.dart';
+import '_publishbox.dart';
 
 class Chat extends StatefulWidget {
   @override

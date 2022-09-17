@@ -1,9 +1,9 @@
+import 'package:bitty/page/group/avatar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../state/contact_store.dart';
 import '../../state/group_store.dart';
-import '../model/group.dart';
+import '../../model/group.dart';
 
 class GroupItem extends StatelessWidget {
   GroupItem(this.group);
@@ -23,33 +23,7 @@ class GroupItem extends StatelessWidget {
                   Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
                 Container(
                   padding: EdgeInsets.only(left: 0, right: 10),
-                  child: Stack(children: [
-                    SizedBox(
-                      width: 40,
-                      height: 40,
-                      child: Container(
-                          child: Center(
-                        child: (this.group.group?.avatar == "")
-                            ? Text(
-                                (this.group.group?.name ?? '')[0],
-                                style: TextStyle(
-                                    fontSize: 30, color: Colors.grey.shade500),
-                              )
-                            : Image.network(group.group?.avatar ?? ''),
-                      )),
-                    ),
-                    // Positioned(
-                    //     top: 0,
-                    //     right: 0,
-                    //     child: Container(
-                    //       width: 10,
-                    //       height: 10,
-                    //       decoration: new BoxDecoration(
-                    //         color: Colors.red.shade500,
-                    //         shape: BoxShape.circle,
-                    //       ),
-                    //     )),
-                  ]),
+                  child: Stack(children: [GroupAvatar(group.group)]),
                 ),
                 Flexible(
                   flex: 1,

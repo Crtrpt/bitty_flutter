@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 class ContactAvatar extends StatelessWidget {
-  ContactAvatar(this.contact, {this.size: 40});
-  var contact;
+  ContactAvatar(this.user, {this.size: 40});
+  var user;
   double size;
 
   @override
@@ -12,12 +12,18 @@ class ContactAvatar extends StatelessWidget {
       height: this.size,
       child: Container(
           child: Center(
-        child: (this.contact.user?.avatar == "")
+        child: (this.user?.avatar == "")
             ? Text(
-                (this.contact.user?.nick_name ?? '')[0],
+                (this.user?.nick_name ?? '')[0],
                 style: TextStyle(fontSize: 30, color: Colors.grey.shade500),
               )
-            : Image.network(this.contact.user?.avatar ?? ''),
+            : ClipRRect(
+                borderRadius: BorderRadius.circular(this.size / 2),
+                child: Image.network(
+                  this.user?.avatar ?? '',
+                  width: size,
+                  height: size,
+                )),
       )),
     );
   }

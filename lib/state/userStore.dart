@@ -1,4 +1,4 @@
-import 'package:bitty/page/model/user.dart';
+import 'package:bitty/model/user.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -22,8 +22,8 @@ class UserStore extends Bloc<BittyEvent, AuthState> {
     on<LoginEvent>((event, emit) {
       var user = UserState();
       user.isLogin = true;
-      user.token = event.paylaod['token'] as String;
-
+      user.token = event.payload['token'] as String;
+      user.user = User.fromJson(event.payload['user']);
       Api.defaultHeader.putIfAbsent("token", () => user.token!);
       emit(user);
     });

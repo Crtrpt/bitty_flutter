@@ -1,5 +1,10 @@
 import 'package:bitty/api/mqtt.dart';
+import 'package:bitty/model/payload.dart';
+import 'package:bitty/state/event.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../state/session_store.dart';
 
 class PublishBox extends StatefulWidget {
   var expand;
@@ -45,7 +50,9 @@ class _PublishBox extends State<PublishBox> {
                     icon: Icon(Icons.send),
                     color: Colors.grey,
                     onPressed: () {
-                      MqttClient.publish("11111111", "222222222222");
+                      print("发送消息");
+                      BlocProvider.of<SessionStore>(context)
+                          .add(SendMsgEvent(Payload(content: "111", type: 0)));
                     },
                   ),
                 ),

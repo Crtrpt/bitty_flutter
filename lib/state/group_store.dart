@@ -1,7 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../api/api.dart';
-import '../page/model/group.dart';
+import '../model/group.dart';
 import 'event.dart';
 
 class GroupState {
@@ -15,11 +15,13 @@ class GroupStore extends Bloc<BittyEvent, GroupState> {
   GroupStore() : super(GroupState()) {
     on<InitEvent>((event, emit) async {
       var res = await Api.get("group/list");
+      state.list.clear();
+      state.map.clear();
+      state.count = 0;
       if (res['code'] == 0) {
         (res['data'] as Map<String, dynamic>).entries.forEach((element) {
           var res = GroupList.fronJson(element.value);
-          state.list.clear();
-          state.map.clear();
+
           state.map.putIfAbsent(element.key, () => res);
           state.list.add(res);
           state.count++;

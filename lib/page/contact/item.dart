@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../state/contact_store.dart';
-import '../model/contact.dart';
+import '../../model/contact.dart';
 import 'avatar.dart';
 
 class ContactItem extends StatelessWidget {
@@ -25,7 +25,7 @@ class ContactItem extends StatelessWidget {
                 Container(
                   padding: EdgeInsets.only(left: 0, right: 10),
                   child: Stack(children: [
-                    ContactAvatar(contact),
+                    ContactAvatar(contact.user),
                     // Positioned(
                     //     top: 0,
                     //     right: 0,
@@ -49,7 +49,7 @@ class ContactItem extends StatelessWidget {
                       bottom: BorderSide(
                           width: 1,
                           style: BorderStyle.solid,
-                          color: Colors.grey.shade300),
+                          color: Colors.grey.shade200),
                     )),
                     child: Row(
                         mainAxisAlignment: MainAxisAlignment.start,

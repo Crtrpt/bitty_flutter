@@ -43,7 +43,7 @@ class GroupPofileState extends State<GroupProfile> {
                         child: Row(
                           children: [
                             GroupAvatar(
-                              state.cur,
+                              state.cur?.group,
                               size: 60,
                             ),
                             Padding(
