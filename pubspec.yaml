@@ -16,14 +16,13 @@ dependencies:
     sdk: flutter
   cupertino_icons: ^1.0.2
   mqtt_client: ^9.6.6
-  faker: ^2.0.0 #假数据
-  i18n_extension: ^4.2.1 # 多语言支持
   video_player: ^2.3.0
   flutter_markdown: ^0.6.9+1 #markdown 支持
   font_awesome_flutter: ^10.1.0
   shared_preferences: ^2.0.15
   http: ^0.13.4
   flutter_bloc: ^8.1.1
+  file_picker: ^5.1.0 # 文件选择
 
 
 

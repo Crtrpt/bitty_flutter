@@ -22,7 +22,6 @@ class _SessionState extends State<Session> {
 
   @override
   Widget build(BuildContext context) {
-    print("init =======================");
     return Scaffold(
         appBar: AppBar(
           leading: IconButton(

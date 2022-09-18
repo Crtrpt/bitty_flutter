@@ -64,6 +64,7 @@ class Session {
         description: json['description'] as String,
         avatar: json['avatar'] as String,
         session_id: json['session_id'] as String,
+        created_at: json['created_at'] as String,
       );
 }
 

@@ -48,8 +48,6 @@ class _Login extends State<Login> {
           }),
           print("获取本地account: " + form.account.toString())
         });
-
-    print("=========================================");
   }
 
   @override

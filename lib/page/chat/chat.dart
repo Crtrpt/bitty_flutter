@@ -27,6 +27,12 @@ class ChatState extends State<Chat> {
     return BlocBuilder<SessionStore, SessionState>(
         builder: (context, sessionState) => Scaffold(
               appBar: AppBar(
+                leading: IconButton(
+                    icon: Icon(Icons.arrow_back),
+                    color: Colors.grey,
+                    onPressed: () {
+                      Navigator.pop(context);
+                    }),
                 toolbarHeight: 50,
                 backgroundColor: Colors.white,
                 elevation: 0.5,

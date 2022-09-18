@@ -3,6 +3,8 @@ import 'package:bitty/state/group_store.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../const.dart';
+
 class GroupProfile extends StatefulWidget {
   @override
   State<StatefulWidget> createState() => GroupPofileState();
@@ -98,7 +100,7 @@ class GroupPofileState extends State<GroupProfile> {
                                           color: Colors.grey.shade600),
                                     ),
                                     Text(
-                                      "成员类型 : ${state.cur?.config?.type}",
+                                      "成员类型 : ${constGroupMemberType[state.cur?.config?.type ?? 2]}",
                                       style: TextStyle(
                                           color: Colors.grey.shade600),
                                     ),
@@ -129,6 +131,14 @@ class GroupPofileState extends State<GroupProfile> {
                                 style: TextStyle(),
                               ),
                             ),
+                            ((state.cur?.config?.type == 0)
+                                ? OutlinedButton(
+                                    onPressed: () => {},
+                                    child: Text(
+                                      "设置",
+                                    ),
+                                  )
+                                : Container()),
                             OutlinedButton(
                               onPressed: () => {},
                               child: Text(

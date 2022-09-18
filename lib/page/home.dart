@@ -83,24 +83,27 @@ class MainPageState extends State<MainPage> with TickerProviderStateMixin {
                 ]),
               ),
               ListTile(
+                leading: Icon(Icons.settings),
                 title: Text('设置'),
                 onTap: () {
                   Navigator.popAndPushNamed(context, "/account/profile");
                 },
               ),
+              // ListTile(
+              //   title: Text('群组设置'),
+              //   onTap: () {
+              //     Navigator.popAndPushNamed(context, "/account/group");
+              //   },
+              // ),
               ListTile(
-                title: Text('群组设置'),
-                onTap: () {
-                  Navigator.popAndPushNamed(context, "/account/group");
-                },
-              ),
-              ListTile(
+                leading: Icon(Icons.person),
                 title: Text('联系人设置'),
                 onTap: () {
                   Navigator.popAndPushNamed(context, "/account/contact");
                 },
               ),
               ListTile(
+                leading: Icon(Icons.person_pin),
                 title: Text("虚拟账户"),
                 onTap: () {
                   Navigator.popAndPushNamed(context, "/account/virtual_account",
@@ -108,6 +111,7 @@ class MainPageState extends State<MainPage> with TickerProviderStateMixin {
                 },
               ),
               ListTile(
+                leading: Icon(Icons.exit_to_app),
                 title: const Text("退出"),
                 onTap: () {
                   Navigator.pop(context);
