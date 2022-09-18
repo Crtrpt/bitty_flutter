@@ -49,7 +49,17 @@ class SessionState extends State<Contact> {
       ),
       body: BlocBuilder<ContactStore, ContactState>(
           builder: (context, state) => Column(
-                children: state.list.map((e) => ContactItem(e)).toList(),
+                children: state.list
+                    .map((e) => ContactItem(
+                          e,
+                          onTap: () => {
+                            BlocProvider.of<ContactStore>(context,
+                                    listen: false)
+                                .setCur(e.contact!.target_id!),
+                            Navigator.pushNamed(context, "/contact/profile")
+                          },
+                        ))
+                    .toList(),
               )),
     );
   }

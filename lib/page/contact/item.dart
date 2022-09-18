@@ -7,16 +7,15 @@ import '../../model/contact.dart';
 import 'avatar.dart';
 
 class ContactItem extends StatelessWidget {
-  ContactItem(this.contact);
+  ContactItem(this.contact, {this.leading, this.action, this.onTap});
+  Widget? leading;
+  List<Widget>? action;
+  Function? onTap;
   final ContactList contact;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-        onTap: () => {
-              BlocProvider.of<ContactStore>(context, listen: false)
-                  .setCur(contact.contact!.target_id!),
-              Navigator.pushNamed(context, "/contact/profile")
-            },
+        onTap: () => {},
         child: Padding(
             padding: EdgeInsets.fromLTRB(10, 10, 10, 5),
             child: Container(
@@ -64,18 +63,10 @@ class ContactItem extends StatelessWidget {
                                           fontSize: 12,
                                           color: Colors.grey.shade500),
                                     ),
-                                  )
+                                  ),
                                 ],
                               )),
-                          // SizedBox(
-                          //   child: Container(
-                          //     child: Text(
-                          //       "刚刚",
-                          //       style: TextStyle(
-                          //           fontSize: 12, color: Colors.grey.shade500),
-                          //     ),
-                          //   ),
-                          // ),
+                          ...action ?? []
                         ]),
                   ),
                 ),

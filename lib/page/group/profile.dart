@@ -1,4 +1,5 @@
 import 'package:bitty/model/group.dart';
+import 'package:bitty/page/contact/contect_selector.dart';
 import 'package:bitty/page/group/avatar.dart';
 import 'package:bitty/state/event.dart';
 import 'package:bitty/state/group_store.dart';
@@ -114,7 +115,7 @@ class GroupPofileState extends State<GroupProfile> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Padding(
-                        padding: EdgeInsets.only(top: 20, left: 20, right: 20),
+                        padding: EdgeInsets.only(top: 0, left: 20, right: 20),
                         child: Row(
                           children: [
                             GroupAvatar(
@@ -199,7 +200,17 @@ class GroupPofileState extends State<GroupProfile> {
                               ),
                             ),
                             OutlinedButton(
-                              onPressed: () => {},
+                              onPressed: () => {
+                                showModalBottomSheet<void>(
+                                    context: context,
+                                    builder: (BuildContext context) {
+                                      return ContactSelector(
+                                          selected: (context, userIds) => {
+                                                Navigator.pop(context),
+                                                print("选择了用户之后")
+                                              });
+                                    })
+                              },
                               child: Text(
                                 "邀请好友加入",
                                 style: TextStyle(),
