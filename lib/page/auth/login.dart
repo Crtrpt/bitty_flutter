@@ -5,6 +5,7 @@ import 'package:bitty/state/group_store.dart';
 import 'package:bitty/state/userStore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../api/api.dart';
 import '../../state/session_store.dart';
@@ -18,6 +19,8 @@ class _Login extends State<Login> {
   Loginform form = new Loginform();
   late TextEditingController account;
   late TextEditingController password;
+  var prefs = SharedPreferences.getInstance();
+
   @override
   void initState() {
     super.initState();
@@ -30,6 +33,23 @@ class _Login extends State<Login> {
       form.password = password.value.text.toString();
     });
     print(form);
+
+    prefs.then((p) => {
+          setState(() {
+            account.text = p.getString("account") ?? '';
+            // form.account = ;
+            if (p.getString("account") == null) {
+              form.rememenber = false;
+              form.agree = false;
+            } else {
+              form.agree = true;
+              form.rememenber = true;
+            }
+          }),
+          print("获取本地account: " + form.account.toString())
+        });
+
+    print("=========================================");
   }
 
   @override
@@ -186,8 +206,14 @@ class _Login extends State<Login> {
                               ));
                               return;
                             }
+                            if (!form.rememenber) {
+                              print("删除本地存储的账户");
+                              prefs.then((p) => {p.remove("account")});
+                            }
                             Api.post("auth/login", body: form).then((res) {
                               if (res['code'] == 0) {
+                                prefs.then((p) =>
+                                    {p.setString("account", form.account!)});
                                 BlocProvider.of<UserStore>(context)
                                     .add(LoginEvent(res['data']));
                                 BlocProvider.of<SessionStore>(context)

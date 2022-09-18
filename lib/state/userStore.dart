@@ -41,8 +41,6 @@ class UserStore extends Bloc<BittyEvent, AuthState> {
 
   init() {
     try {
-      var prefs = SharedPreferences.getInstance();
-      prefs.then((p) => {p.getString("account")});
       // var account =.getString("account");
       // var content = prefs.getString("store");
     } catch (e) {

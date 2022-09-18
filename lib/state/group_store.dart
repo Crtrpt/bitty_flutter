@@ -11,22 +11,28 @@ class GroupState {
   Map<String, GroupList> map = new Map();
 }
 
+class FetchGroupState extends GroupState {}
+
 class GroupStore extends Bloc<BittyEvent, GroupState> {
   GroupStore() : super(GroupState()) {
     on<InitEvent>((event, emit) async {
+      emit(FetchGroupState());
+      print("修改为group fetch状态");
       var res = await Api.get("group/list");
-      state.list.clear();
-      state.map.clear();
-      state.count = 0;
+
       if (res['code'] == 0) {
+        var newState = GroupState();
+        newState.list.clear();
+        newState.map.clear();
+        newState.count = 0;
         (res['data'] as Map<String, dynamic>).entries.forEach((element) {
           var res = GroupList.fronJson(element.value);
 
-          state.map.putIfAbsent(element.key, () => res);
-          state.list.add(res);
-          state.count++;
+          newState.map.putIfAbsent(element.key, () => res);
+          newState.list.add(res);
+          newState.count++;
         });
-        emit(state);
+        emit(newState);
       }
     });
   }

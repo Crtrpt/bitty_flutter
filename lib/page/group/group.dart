@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../state/event.dart';
 import '../../state/group_store.dart';
 import 'item.dart';
 
@@ -15,10 +16,10 @@ class _GroupState extends State<Group> {
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
-            icon: Icon(Icons.add),
+            icon: Icon(Icons.refresh),
             color: Colors.grey,
             onPressed: () {
-              Navigator.pushNamed(context, "/group/create");
+              BlocProvider.of<GroupStore>(context).add(InitEvent());
             }),
         toolbarHeight: 50,
         backgroundColor: Colors.white,
@@ -38,6 +39,12 @@ class _GroupState extends State<Group> {
               color: Colors.grey,
               onPressed: () {
                 Navigator.pushNamed(context, "/group/search");
+              }),
+          IconButton(
+              icon: Icon(Icons.add),
+              color: Colors.grey,
+              onPressed: () {
+                Navigator.pushNamed(context, "/group/create");
               }),
         ],
       ),
