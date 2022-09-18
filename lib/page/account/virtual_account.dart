@@ -50,9 +50,6 @@ class VirtualAccountState extends State<VirtualAccount> {
       (res['data'] as List).forEach((item) {
         accountList.add(User.fromJson(item));
       });
-      // setState(() {
-      //   count = this.accountList.length ?? 0;
-      // });
       return Future.value(accountList);
     }
     return Future.value([]);

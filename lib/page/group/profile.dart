@@ -1,9 +1,13 @@
+import 'package:bitty/model/group.dart';
 import 'package:bitty/page/group/avatar.dart';
+import 'package:bitty/state/event.dart';
 import 'package:bitty/state/group_store.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../api/api.dart';
 import '../../const.dart';
+import '../../state/session_store.dart';
 
 class GroupProfile extends StatefulWidget {
   @override
@@ -11,6 +15,59 @@ class GroupProfile extends StatefulWidget {
 }
 
 class GroupPofileState extends State<GroupProfile> {
+  remove(Group? group) async {
+    var res = await showDialog(
+        context: this.context,
+        builder: (context) => AlertDialog(
+              content: Text(
+                "确认删除该群组?",
+              ),
+              actions: [
+                ElevatedButton(
+                    style: ButtonStyle(
+                        backgroundColor:
+                            MaterialStateProperty.all(Colors.red.shade500)),
+                    onPressed: () => {Navigator.pop(context, 0)},
+                    child: Text(
+                      "确定",
+                    )),
+                ElevatedButton(
+                    onPressed: () => {Navigator.pop(context, 1)},
+                    child: Text("取消"))
+              ],
+            ));
+    if (res != 0) {
+      print("用户取消");
+      return;
+    }
+    Api.post("group/remove", body: {
+      'group_id': group?.group_id,
+    }).then((res) => {
+          if (res['code'] == 0)
+            {
+              showDialog(
+                  context: this.context,
+                  builder: (context) => AlertDialog(
+                        content: Text("删除成功"),
+                        actions: [
+                          ElevatedButton(
+                              onPressed: () {
+                                BlocProvider.of<GroupStore>(context).add(
+                                    RemoveGroupEvent(groupId: group?.group_id));
+                                BlocProvider.of<SessionStore>(context).add(
+                                    RemoveSessionEvent(
+                                        sessionId: group?.session_id));
+                                int count = 0;
+                                Navigator.of(context)
+                                    .popUntil((_) => count++ >= 2);
+                              },
+                              child: Text("确定"))
+                        ],
+                      ))
+            }
+        });
+  }
+
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<GroupStore, GroupState>(
@@ -26,6 +83,22 @@ class GroupPofileState extends State<GroupProfile> {
                 backgroundColor: Colors.white,
                 centerTitle: true,
                 elevation: 0.5,
+                actions: [
+                  ((state.cur?.config?.type == 0)
+                      ? IconButton(
+                          icon: Icon(Icons.settings),
+                          color: Colors.grey,
+                          onPressed: () {
+                            Navigator.pop(context);
+                          })
+                      : Container()),
+                  IconButton(
+                      icon: Icon(Icons.person_pin_circle),
+                      color: Colors.grey,
+                      onPressed: () {
+                        Navigator.pop(context);
+                      })
+                ],
                 title: Text(
                   "${state.cur?.group?.name} ",
                   style: TextStyle(
@@ -117,7 +190,8 @@ class GroupPofileState extends State<GroupProfile> {
                             ),
                             OutlinedButton(
                               onPressed: () => {
-                                Navigator.pushNamed(context, "/group/member")
+                                Navigator.pushNamed(context, "/group/member",
+                                    arguments: state.cur?.group?.group_id)
                               },
                               child: Text(
                                 "群成员",
@@ -131,16 +205,15 @@ class GroupPofileState extends State<GroupProfile> {
                                 style: TextStyle(),
                               ),
                             ),
-                            ((state.cur?.config?.type == 0)
-                                ? OutlinedButton(
-                                    onPressed: () => {},
-                                    child: Text(
-                                      "设置",
-                                    ),
-                                  )
-                                : Container()),
                             OutlinedButton(
                               onPressed: () => {},
+                              child: Text(
+                                "退出群组",
+                                style: TextStyle(),
+                              ),
+                            ),
+                            OutlinedButton(
+                              onPressed: () => {remove(state.cur?.group)},
                               child: Text(
                                 "删除",
                                 style: TextStyle(color: Colors.red.shade500),

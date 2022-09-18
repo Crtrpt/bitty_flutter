@@ -25,6 +25,11 @@ class RemoveSessionEvent extends BittyEvent {
   RemoveSessionEvent({this.sessionId});
 }
 
+class RemoveGroupEvent extends BittyEvent {
+  String? groupId;
+  RemoveGroupEvent({this.groupId});
+}
+
 class SendMsgEvent extends BittyEvent {
   Payload payload;
   SendMsgEvent(this.payload);

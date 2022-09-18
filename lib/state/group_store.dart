@@ -35,6 +35,9 @@ class GroupStore extends Bloc<BittyEvent, GroupState> {
         emit(newState);
       }
     });
+    on<RemoveGroupEvent>((event, emit) {
+      print("============处理删除group事件");
+    });
   }
 
   void setCur(String groupId) {

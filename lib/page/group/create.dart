@@ -1,3 +1,4 @@
+import 'package:bitty/api/api.dart';
 import 'package:bitty/model/group.dart';
 import 'package:flutter/material.dart';
 
@@ -42,7 +43,9 @@ class GroupCreateState extends State<GroupCreate> {
   }
 
   create() {
-    print("===========================创建群组");
+    Api.post("group/create", body: group).then((res) => {
+          if (res['code'] == 0) {print("创建成功")}
+        });
   }
 
   @override

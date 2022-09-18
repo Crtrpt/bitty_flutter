@@ -52,6 +52,27 @@ class Group {
         add_group_question: json['add_group_question'] as String,
         add_group_answer: json['add_group_answer'] as String,
       );
+
+  Map<String, dynamic> toJson() {
+    return {
+      'name': name,
+      'avatar': avatar,
+      'group_id': group_id,
+      'session_id': session_id,
+      'own_user_id': own_user_id,
+      'created_at': created_at,
+      'description': description,
+      'allow_search': allow_search,
+      'allow_anon_session': allow_anon_session,
+      'add_group_type': add_group_type,
+      'level': level,
+      'type': type,
+      'member_count': member_count,
+      'max_member_count': max_member_count,
+      'add_group_question': add_group_question,
+      'add_group_answer': add_group_answer,
+    };
+  }
 }
 
 class GroupMember {
@@ -69,6 +90,15 @@ class GroupMember {
         created_at: json['created_at'] as String,
         name: json['name'] as String,
       );
+  Map<String, dynamic> toJson() {
+    return {
+      'name': name,
+      'user_id': user_id,
+      'group_id': group_id,
+      "type": type,
+      "created_at": created_at,
+    };
+  }
 }
 
 class GroupList {
